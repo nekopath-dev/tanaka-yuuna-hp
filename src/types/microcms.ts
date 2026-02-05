@@ -36,7 +36,7 @@ export interface GlobalSettings {
   about_subtitle: string;
   about_text: string; // Rich editor HTML
   profile_image?: MicroCMSImage;
-  cv_list?: { year: string; content: string }[];
+  cv_list?: string; // Rich editor HTML
   contact_email: string;
   contact_description: string;
   instagram_handle: string;

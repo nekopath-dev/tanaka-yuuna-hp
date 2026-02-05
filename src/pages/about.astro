@@ -34,19 +34,14 @@ const settings = await getGlobalSettings();
       <div class="w-full h-[1px] bg-gray-200 dark:bg-gray-800"></div>
 
       <!-- CV Timeline -->
-      {settings.cv_list && settings.cv_list.length > 0 && (
+      {settings.cv_list && (
         <div class="flex flex-col gap-12">
           <h2 class="font-serif text-2xl text-text-main dark:text-white tracking-widest flex items-center gap-4">
             略歴 <span class="text-xs font-display text-primary tracking-wider uppercase opacity-80 pt-1">Biography</span>
           </h2>
-          <dl class="flex flex-col gap-8 font-serif">
-            {settings.cv_list.map((item) => (
-              <div class="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-6 items-baseline group">
-                <dt class="text-text-muted font-display text-sm border-b border-transparent group-hover:border-primary/50 transition-colors pb-1">{item.year}</dt>
-                <dd class="text-text-main dark:text-gray-300">{item.content}</dd>
-              </div>
-            ))}
-          </dl>
+          <div class="font-serif text-base leading-[1.8] text-text-main dark:text-gray-300 rich-content">
+            <Fragment set:html={settings.cv_list} />
+          </div>
         </div>
       )}
     </div>
