@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yuna Tanaka Minimalist Portfolio</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Noto+Serif+JP:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0505c7",
+                        "background-light": "#f9f9f7", /* Washi paper off-white */
+                        "background-dark": "#1a1a1a", /* Charcoal */
+                        "text-main": "#2d2d2d", /* Soft Black */
+                        "text-muted": "#6e6e6e", /* Greige/Grey */
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["'Noto Serif JP'", "serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem", 
+                        "sm": "0.125rem",
+                        "lg": "0.25rem", 
+                        "xl": "0.5rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for gallery feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d1d1; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8; 
+        }
+
+        /* Vertical text utility */
+        .writing-vertical-rl {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-200 font-display transition-colors duration-300 antialiased selection:bg-primary/20">
+<div class="flex flex-col md:flex-row min-h-screen w-full relative">
+<!-- Mobile Header (Visible only on small screens) -->
+<header class="md:hidden flex items-center justify-between p-6 bg-background-light/90 dark:bg-background-dark/90 sticky top-0 z-50 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div class="flex flex-col">
+<h1 class="font-serif text-lg font-bold tracking-wider text-text-main dark:text-white">田中 結菜</h1>
+<span class="text-xs text-primary uppercase tracking-widest mt-1">Textile Artist</span>
+</div>
+<button class="p-2 text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Sidebar Navigation (Desktop Fixed) -->
+<aside class="hidden md:flex flex-col w-64 h-screen sticky top-0 border-r border-gray-200/50 dark:border-gray-800/50 bg-background-light dark:bg-background-dark z-40 p-10 justify-between shrink-0">
+<!-- Logo Area -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h1 class="font-serif text-2xl font-bold tracking-widest text-text-main dark:text-white">田中 結菜</h1>
+<p class="text-primary text-xs font-medium tracking-[0.2em] uppercase mt-2">Textile Artist</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-8">
+<a class="group flex items-center gap-4 text-text-muted hover:text-primary transition-colors duration-300" href="#works">
+<span class="material-symbols-outlined text-[20px] font-light">grid_view</span>
+<span class="text-sm font-medium tracking-wide group-hover:translate-x-1 transition-transform duration-300">作品 (Works)</span>
+</a>
+<a class="group flex items-center gap-4 text-text-muted hover:text-primary transition-colors duration-300" href="#process">
+<span class="material-symbols-outlined text-[20px] font-light">gesture</span>
+<span class="text-sm font-medium tracking-wide group-hover:translate-x-1 transition-transform duration-300">工程 (Process)</span>
+</a>
+<a class="group flex items-center gap-4 text-text-muted hover:text-primary transition-colors duration-300" href="#about">
+<span class="material-symbols-outlined text-[20px] font-light">person</span>
+<span class="text-sm font-medium tracking-wide group-hover:translate-x-1 transition-transform duration-300">作家について (About)</span>
+</a>
+<a class="group flex items-center gap-4 text-text-muted hover:text-primary transition-colors duration-300" href="#contact">
+<span class="material-symbols-outlined text-[20px] font-light">mail</span>
+<span class="text-sm font-medium tracking-wide group-hover:translate-x-1 transition-transform duration-300">お問い合わせ (Contact)</span>
+</a>
+</nav>
+<!-- Social / Footer Small -->
+<div class="flex gap-4 opacity-50">
+<a class="hover:text-primary transition-colors" href="#"><span class="text-xs">IG</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="text-xs">TW</span></a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col w-full min-w-0">
+<!-- Hero Section -->
+<section class="relative w-full h-[85vh] md:h-screen overflow-hidden">
+<!-- Background Image: Extreme Macro Texture -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-[20s] hover:scale-105" data-alt="Extreme close-up macro shot of indigo blue threads woven in a traditional pattern, showing fiber details" style='background-image: linear-gradient(to right, rgba(249, 249, 247, 0.2), rgba(249, 249, 247, 0.1)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4ALlYvfx8G6UqAql1oePyzKeh_SDZNrB6cT0gfH-QmKyHjA6ymijH6L8CWig9RNnEm3CZ14hopwC5lesTqDSoWk7CrrT9-foTVetpPsqyK6BhF46tfmmRpORt0l78O-hO0rkDaEGuPjU0p1IuOMA7k_eH_9wuT1ZaznMB40pb3Yu3GPNAsJQLpd4QTmfAg2_E4Zwbzc1PxSPiyDGgRSt_MSpUhdITg5UoLvB5MmRZK_h4WvCwrQzBjXmV0ilO6i_nmSajyiut9lM");'>
+</div>
+<!-- Overlay for text readability if needed, kept subtle -->
+<div class="absolute inset-0 bg-white/10 dark:bg-black/20 mix-blend-overlay"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 w-full h-full flex items-center justify-center md:justify-end px-6 md:px-20 py-12">
+<div class="flex flex-row-reverse gap-8 md:gap-16 items-start h-3/4">
+<!-- Vertical Japanese Text -->
+<div class="writing-vertical-rl text-text-main dark:text-white h-full flex items-center">
+<h2 class="font-serif text-4xl md:text-6xl font-light leading-relaxed tracking-widest drop-shadow-sm">
+                                綴織：時の芸術
+                            </h2>
+<p class="mt-8 font-serif text-sm md:text-base tracking-widest text-text-main/80 dark:text-gray-200/80 border-r border-primary/40 pr-6 mr-6">
+                                静寂を形に織り込む。<br/>京都の伝統工芸と現代ミニマリズムの融合。
+                            </p>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-20 md:translate-x-0 flex flex-col items-center gap-2 opacity-60 animate-bounce">
+<span class="text-[10px] tracking-widest uppercase">Scroll</span>
+<div class="w-[1px] h-12 bg-primary"></div>
+</div>
+</div>
+</section>
+<!-- Artist Statement / Intro (About) -->
+<section class="py-24 px-6 md:px-32 flex justify-center bg-background-light dark:bg-background-dark" id="about">
+<div class="max-w-2xl text-center flex flex-col gap-8">
+<span class="material-symbols-outlined text-primary/40 text-4xl">history_edu</span>
+<p class="font-serif text-lg md:text-xl leading-loose text-text-main dark:text-gray-200">
+                        「糸一本一本に込められた時間と呼吸」
+                    </p>
+<p class="text-sm md:text-base leading-loose text-text-muted text-justify md:text-center">
+                        伝統的な綴織（つづれおり）の技法を用いながら、現代の空間に静寂をもたらすテキスタイルアートを制作しています。
+                        自然の風景や記憶の断片を抽象化し、縦糸と横糸の交差の中に永遠の時間を閉じ込めます。
+                        私の作品は単なる装飾ではなく、空間と対話する「静けさの装置」です。
+                    </p>
+<div class="pt-4">
+<span class="inline-block w-12 h-[1px] bg-primary/30"></span>
+</div>
+</div>
+</section>
+<!-- Process Section (Horizontal Scroll) -->
+<section class="py-20 bg-white dark:bg-[#151515]" id="process">
+<div class="container mx-auto px-6 md:px-20 mb-10">
+<div class="flex items-end gap-4 mb-2">
+<h2 class="font-serif text-3xl font-bold tracking-tight text-text-main dark:text-white">制作工程</h2>
+<span class="text-sm text-primary font-medium mb-1 tracking-wider uppercase opacity-80">The Process</span>
+</div>
+<p class="text-sm text-text-muted">素材から完成まで、手仕事の記録。</p>
+</div>
+<div class="w-full overflow-x-auto pb-8 px-6 md:px-20 [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<div class="flex gap-8 min-w-max">
+<!-- Step 1 -->
+<div class="w-[300px] group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden rounded bg-gray-100 dark:bg-gray-800 mb-4 relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Hands dyeing silk threads in indigo vats, traditional Japanese dyeing process" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCuvaJzrDSZiicFxn7dspYQTuvVJ2ABSlKQYxec7WhFdKuk0ZpqSG4mRo3GL2OSQNybZ-tzZiGzvDwTysWw5dJAHBzeBJAFFXnO56smvhTfzJkZQgmAwihnJNgOSHljSaNyyaXpvDtY6ydGL8LQwUzRjn9O0d4DrfED02Suqp-Q62ixDoy5_96RzTkWhiQ2OkzYlTMtuxEfRxoE-0URnRUBeHshiC8tac89Dv6gCWGP59BrBcVeWdkvzetr5jzq56bZAmuSO8FzXjM");'>
+</div>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/80 px-2 py-1 text-xs font-bold tracking-widest">01</div>
+</div>
+<h3 class="font-serif text-lg text-text-main dark:text-white mb-1">染色 (Dyeing)</h3>
+<p class="text-xs text-text-muted leading-relaxed">
+                                天然染料を使用し、糸の芯まで色を浸透させます。<br/>季節や気温により変化する一期一会の色。
+                            </p>
+</div>
+<!-- Step 2 -->
+<div class="w-[300px] group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden rounded bg-gray-100 dark:bg-gray-800 mb-4 relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Warping the loom, tightly stretched vertical white threads" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBX--6-AaIodfIM7xldUeweaSoqAo-QdUPhEc369DWp_TdSOLn9z4Wub-eMeIyOW6vwCGH0MZM8a3zWrkl8_h3FayHVlkMsaI6L-fiBq5qVzwwKbvlzqoZLy35l_pNOFSZgk4hJhxUJc0-eApmuovwUOm22cCfXtjqAuw-cP50gsIx-0rWNzMecuW4-sgszJkBT2ycsA1hv-v680dk2TPPlOQbn5lCpiVQMwUqbsEn_YciU8zFs1OmTB4fFDmwtVo2cONV-zSusAEA");'>
+</div>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/80 px-2 py-1 text-xs font-bold tracking-widest">02</div>
+</div>
+<h3 class="font-serif text-lg text-text-main dark:text-white mb-1">整経 (Warping)</h3>
+<p class="text-xs text-text-muted leading-relaxed">
+                                数千本の経糸（たていと）を均一な張力で張り、<br/>織機の準備を整える静謐な時間。
+                            </p>
+</div>
+<!-- Step 3 -->
+<div class="w-[300px] group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden rounded bg-gray-100 dark:bg-gray-800 mb-4 relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Close up of hand weaving with a wooden shuttle, colorful weft threads" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBAMNgspsgSlVqTmcwfzD2ON3oMpuRKXCkIyT4X0966FmAnLXAkBXSYcXhEDmHKhhgJxOBKN6WTcDo0D6_H9ghTnaxaWaSjhbIOS2a0C2NbqCwXmahBr_fSLMglVvQ-TLiB0W744-8mTlX0G3eNlThiQuaZV_ftSWFqKzIgkIpNQUoVv40IPxrAbZOPnlo1SZs3d3Y_QwogAFPb0DER2vaeHj4FPW77cS9nzegKP8VQOHxI0a6nuHtEtQmH79AnIRlOOcoryjKMgd0");'>
+</div>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/80 px-2 py-1 text-xs font-bold tracking-widest">03</div>
+</div>
+<h3 class="font-serif text-lg text-text-main dark:text-white mb-1">本綴 (Weaving)</h3>
+<p class="text-xs text-text-muted leading-relaxed">
+                                指先と爪を使い、緯糸（よこいと）を一本ずつ<br/>織り込んでいく「爪掻き」の技法。
+                            </p>
+</div>
+<!-- Step 4 -->
+<div class="w-[300px] group cursor-pointer">
+<div class="aspect-[4/3] overflow-hidden rounded bg-gray-100 dark:bg-gray-800 mb-4 relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Finished textile art piece hanging on a minimalist white wall" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCM147rqg-gvdWmpwjVY1p_HCOe-0PSvt17dxTD03V0VJpbA5LV7vMxkhM5G5z3C8PYPO1U4RfgcIqNKCxF27vZMEJ_YeNwn10YC9GU9u5BRbG6VNXLlgBNBJbNld3n8av-0IoqOR9FxHTgkMGtUWmeUdgOXXSl6og3h9JmQYvhmpTbM8EDS3ZygyATD4OYTf9Jl7rArtg9PSa6b9rqU0YoOEbryztGUbWPqY4Sc2q_Ip_wEPBgPq_TZ-auDQuQjErSo_7iB-8ZM9E");'>
+</div>
+<div class="absolute top-3 left-3 bg-white/90 dark:bg-black/80 px-2 py-1 text-xs font-bold tracking-widest">04</div>
+</div>
+<h3 class="font-serif text-lg text-text-main dark:text-white mb-1">仕上げ (Finishing)</h3>
+<p class="text-xs text-text-muted leading-relaxed">
+                                織り上がった布を丁寧に蒸し、<br/>糸を落ち着かせ、作品に命を吹き込みます。
+                            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Works Grid -->
+<section class="py-24 px-6 md:px-20 bg-background-light dark:bg-background-dark" id="works">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 dark:border-gray-800 pb-4">
+<div>
+<div class="flex items-end gap-4 mb-2">
+<h2 class="font-serif text-3xl font-bold tracking-tight text-text-main dark:text-white">代表作</h2>
+<span class="text-sm text-primary font-medium mb-1 tracking-wider uppercase opacity-80">Selected Works</span>
+</div>
+</div>
+<a class="hidden md:flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80 transition-colors" href="#">
+                        All Collection <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
+<!-- Work Item 1 -->
+<article class="flex flex-col gap-4 group">
+<div class="aspect-[3/4] overflow-hidden rounded relative bg-gray-200">
+<div class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-90" data-alt="Abstract tapestry with gradient blues and whites representing morning mist" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCyYbAYC1ZBv0wKOj9YtfOWPdKomA_b2DFeO41RcPCiSGLKlX2ekBfN9mlpXzuyRjMlk52rbCsDfNYafJmv2Bz5E3EuD4ndYbwHjI15iifE37DkhTPbq8QDni-1J-3IPG1c_VXvE9nxN05y4HKJKy4OA9-fwZdHH8l5N61fk2ALjGIK5cXxnZ466SdkUvvGBfAbzI9BLRKS6LhB9JJ3Z2wvr-Bovef1aaZo2FsSF4tgJZRoCONNPW5tzJbbuWGzkSvmKv918EKeTnE");'>
+</div>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<h3 class="font-serif text-xl text-text-main dark:text-white group-hover:text-primary transition-colors">朝靄 (Morning Mist)</h3>
+<p class="text-xs text-text-muted">Silk, Cotton, Silver thread</p>
+</div>
+<span class="text-xs font-mono text-text-muted border border-gray-200 dark:border-gray-700 px-2 py-1 rounded">2023</span>
+</div>
+</article>
+<!-- Work Item 2 -->
+<article class="flex flex-col gap-4 group md:mt-20"> <!-- Offset for masonry feel -->
+<div class="aspect-[3/4] overflow-hidden rounded relative bg-gray-200">
+<div class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-90" data-alt="Minimalist textile art with beige and charcoal geometric patterns resembling stones" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-Fk6u4xz8_vySprsP5WvJ0l26psKZNLR1SBBqmunasRmdzWfZGTeyrXbZ2PEj50ykzMFPFUg3TML4egXgmRY2cSbN-px8xIJYlmtmxYZAWzh2QwXIpbjCVy8ftdxtmXS5upmf0Rv4sETC-1FMTfEGmXA0b-e7YBEzRh1wnaLICNMQ8UZgoFVGD-Y5RiUoIjK-Zz3WyeKtKfb7DyH-TSwpwOuJlQpjpLdQnsu5l81hSM5iPFfL4uKjFnGj4a-LxSiybcW7EJZKUYU");'>
+</div>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<h3 class="font-serif text-xl text-text-main dark:text-white group-hover:text-primary transition-colors">石庭 (Stone Garden)</h3>
+<p class="text-xs text-text-muted">Linen, Wool</p>
+</div>
+<span class="text-xs font-mono text-text-muted border border-gray-200 dark:border-gray-700 px-2 py-1 rounded">2022</span>
+</div>
+</article>
+<!-- Work Item 3 -->
+<article class="flex flex-col gap-4 group">
+<div class="aspect-[3/4] overflow-hidden rounded relative bg-gray-200">
+<div class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-90" data-alt="Deep blue and black woven fabric with flowing water patterns" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbZLojI2kg9ilKCL5aoYsrnySt82UYRL9H2dQ6noKECga2s6MsUEYZQtPYnYD6EGi8Ba6gsCRmd0_hX4hh8tidN9zOrmTbeDh--8lCR8k_csy4JNbOha7usbSdShrJ54GXPOjeT_uDSsVAswXYutA2WTJJEHyjhyvve7Ff94PYrcG_mRTzBCHh2IyNiIKGz8CeIxKhMVPEynRE0Qr8t6dZwt4jgA0a49j8-EhoRdAFaHbzHL61DHGdkE8l8BgiYOT-5y27ZWb14jw");'>
+</div>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<h3 class="font-serif text-xl text-text-main dark:text-white group-hover:text-primary transition-colors">藍流 (Indigo Flow)</h3>
+<p class="text-xs text-text-muted">Hand-dyed Indigo Silk</p>
+</div>
+<span class="text-xs font-mono text-text-muted border border-gray-200 dark:border-gray-700 px-2 py-1 rounded">2023</span>
+</div>
+</article>
+<!-- Work Item 4 -->
+<article class="flex flex-col gap-4 group md:mt-12 lg:mt-20">
+<div class="aspect-[4/3] overflow-hidden rounded relative bg-gray-200">
+<div class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-90" data-alt="Detail shot of a white on white textured weave" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwStZHPesMO3AFGBvj-mquQVAEQoFKsdBRvy9nJl061fICnvoa3Rpt5Po7xzVXvS4HCyLz2pw9ymiQotIal7c3kYinq79qFH1RcAuFZvRzaI8zvxA0ukNl2o9jGAD4DOYCXnNJCYUIE8q-ulXE9ktvvvZnP8LIwnEgU0hKvvY6jn5E1G3Of4p8er7XOIhDKGgdCmKZu8Ruyw7HtgKGz4fA4_YxP-DTKKJUvUb7ncuSRv4h6bauBZPAYMt4m5ZAZtssfVt8n1DRiEs");'>
+</div>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<h3 class="font-serif text-xl text-text-main dark:text-white group-hover:text-primary transition-colors">無垢 (Innocence)</h3>
+<p class="text-xs text-text-muted">Raw Silk</p>
+</div>
+<span class="text-xs font-mono text-text-muted border border-gray-200 dark:border-gray-700 px-2 py-1 rounded">2021</span>
+</div>
+</article>
+<!-- Work Item 5 -->
+<article class="flex flex-col gap-4 group">
+<div class="aspect-[3/4] overflow-hidden rounded relative bg-gray-200">
+<div class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-90" data-alt="Warm earthy toned woven fabric texture with gold accents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBryA8QNOR_mLGPUCb0EJDcGoBQFIdJBwqCX9-rV1FLSylp5fXjHY5Muo323MiX6Jud5-0Vk5vVQ1Ymxl5hmymeqx89S-yXYud-CJvB--Ws_63lZKBpgFhNoPGsoSW4C9FWVmDn76Wz7AD4Sf-MFTJ6cboFO-p0LH7iZpfJe9Vy43T33e-zaXcWAknnvoVkfgjTlHXY2oWVmEkt-gcBm7HX5TjDtDA0d4t3MwhoNE0IqKQRUWuz--TdqJT2mXk0rr-xzqHLqZiZlF4");'>
+</div>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<h3 class="font-serif text-xl text-text-main dark:text-white group-hover:text-primary transition-colors">秋韻 (Autumn Rhyme)</h3>
+<p class="text-xs text-text-muted">Wool, Gold leaf thread</p>
+</div>
+<span class="text-xs font-mono text-text-muted border border-gray-200 dark:border-gray-700 px-2 py-1 rounded">2022</span>
+</div>
+</article>
+</div>
+<div class="md:hidden mt-12 flex justify-center">
+<button class="px-6 py-3 border border-text-main dark:border-white text-sm font-medium hover:bg-text-main hover:text-white dark:hover:bg-white dark:hover:text-background-dark transition-colors">
+                        作品一覧を見る (View All)
+                    </button>
+</div>
+</section>
+<!-- Contact / Footer Area -->
+<footer class="bg-white dark:bg-[#111111] border-t border-gray-100 dark:border-gray-800" id="contact">
+<div class="container mx-auto px-6 md:px-32 py-24">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<!-- Contact Info -->
+<div class="flex flex-col gap-8">
+<h2 class="font-serif text-3xl font-bold text-text-main dark:text-white">お問い合わせ</h2>
+<p class="text-text-muted text-sm leading-relaxed max-w-sm">
+                                作品の購入、特注制作（コミッションワーク）、<br/>展示会に関するお問い合わせはこちらからお願いいたします。
+                            </p>
+<div class="flex flex-col gap-4 mt-4">
+<a class="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors group" href="mailto:hello@yuna-tanaka.jp">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">mail</span>
+                                    hello@yuna-tanaka.jp
+                                </a>
+<div class="flex gap-4 mt-2">
+<a class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all" href="#">
+<span class="text-xs">IG</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all" href="#">
+<span class="text-xs">X</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Newsletter Form (Minimal) -->
+<div class="flex flex-col justify-end gap-6">
+<p class="text-xs font-bold tracking-widest uppercase text-text-muted">Newsletter</p>
+<form class="flex flex-col gap-2">
+<div class="relative">
+<input class="w-full bg-transparent border-b border-gray-300 dark:border-gray-700 py-3 text-text-main dark:text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors font-light" placeholder="メールアドレス (Email Address)" type="email"/>
+<button class="absolute right-0 top-3 text-text-muted hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+<p class="text-[10px] text-gray-400">
+                                展示会や新作の情報を不定期でお届けします。
+                            </p>
+</div>
+</div>
+<div class="mt-24 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 uppercase tracking-widest">
+<p>© 2024 Yuna Tanaka. All rights reserved.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="hover:text-text-main dark:hover:text-white transition-colors" href="#">Privacy</a>
+<a class="hover:text-text-main dark:hover:text-white transition-colors" href="#">Terms</a>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

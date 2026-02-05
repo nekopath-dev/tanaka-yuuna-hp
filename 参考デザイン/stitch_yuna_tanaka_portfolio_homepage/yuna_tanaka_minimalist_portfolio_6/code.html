@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="light" lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - Yuna Tanaka Minimalist Portfolio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Noto+Serif+JP:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0505c7",
+                        "background-light": "#f9f9f7","background-dark": "#1a1a1a","text-main": "#2d2d2d","text-muted": "#6e6e6e",},
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["'Noto Serif JP'", "serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem", 
+                        "sm": "0.125rem",
+                        "lg": "0.25rem", 
+                        "xl": "0.5rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d1d1; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8; 
+        }html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-200 font-display transition-colors duration-300 antialiased selection:bg-primary/20">
+<div class="flex flex-col md:flex-row min-h-screen w-full relative">
+<header class="md:hidden flex items-center justify-between p-6 bg-background-light/90 dark:bg-background-dark/90 sticky top-0 z-50 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div class="flex flex-col">
+<h1 class="font-serif text-lg font-bold tracking-wider text-text-main dark:text-white">田中 結菜</h1>
+<span class="text-xs text-primary uppercase tracking-widest mt-1">Textile Artist</span>
+</div>
+<button class="p-2 text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<aside class="hidden md:flex flex-col w-64 h-screen sticky top-0 border-r border-gray-200/50 dark:border-gray-800/50 bg-background-light dark:bg-background-dark z-40 p-10 justify-between shrink-0">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h1 class="font-serif text-2xl font-bold tracking-widest text-text-main dark:text-white">田中 結菜</h1>
+<p class="text-primary text-xs font-medium tracking-[0.2em] uppercase mt-2">Textile Artist</p>
+</div>
+</div>
+<nav class="flex flex-col gap-8">
+<a class="group flex items-center gap-4 text-text-muted hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined text-[20px] font-light">grid_view</span>
+<span class="text-sm font-medium tracking-wide group-hover:translate-x-1 transition-transform duration-300">作品 (Works)</span>
+</a>
+<a class="group flex items-center gap-4 text-text-muted hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined text-[20px] font-light">gesture</span>
+<span class="text-sm font-medium tracking-wide group-hover:translate-x-1 transition-transform duration-300">工程 (Process)</span>
+</a>
+<a class="group flex items-center gap-4 text-text-muted hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined text-[20px] font-light">person</span>
+<span class="text-sm font-medium tracking-wide group-hover:translate-x-1 transition-transform duration-300">作家について (About)</span>
+</a>
+<a class="group flex items-center gap-4 text-primary font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<span class="text-sm tracking-wide translate-x-1">お問い合わせ (Contact)</span>
+</a>
+</nav>
+<div class="flex gap-4 opacity-50">
+<a class="hover:text-primary transition-colors" href="#"><span class="text-xs">IG</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="text-xs">X</span></a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col w-full min-w-0">
+<div class="flex-1 w-full max-w-4xl mx-auto px-6 py-16 md:py-24 md:px-12 lg:px-24 flex flex-col justify-center min-h-[90vh]">
+<div class="mb-16 md:mb-24 text-center">
+<h2 class="font-serif text-4xl md:text-5xl font-light tracking-widest text-text-main dark:text-white mb-4">お問い合わせ</h2>
+<p class="text-xs md:text-sm font-medium text-primary tracking-[0.3em] uppercase">Contact</p>
+</div>
+<div class="mb-16 max-w-2xl mx-auto text-center">
+<p class="font-serif text-text-main dark:text-gray-200 leading-loose text-sm md:text-base">
+                        作品の購入、特注制作（コミッションワーク）、<br class="hidden md:inline"/>
+                        および展示会のご依頼などは、以下のフォームよりお気軽にお問い合わせください。<br/>
+                        内容を確認次第、3営業日以内にご返信させていただきます。
+                    </p>
+</div>
+<form class="w-full max-w-2xl mx-auto space-y-12">
+<div class="group relative z-0 w-full">
+<input class="block py-2.5 px-0 w-full text-sm text-text-main bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer transition-colors duration-300" id="name" name="name" placeholder=" " required="" type="text"/>
+<label class="peer-focus:font-medium absolute text-sm text-text-muted dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="name">お名前 (Name)</label>
+</div>
+<div class="group relative z-0 w-full">
+<input class="block py-2.5 px-0 w-full text-sm text-text-main bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer transition-colors duration-300" id="email" name="email" placeholder=" " required="" type="email"/>
+<label class="peer-focus:font-medium absolute text-sm text-text-muted dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="email">メールアドレス (Email)</label>
+</div>
+<div class="group relative z-0 w-full">
+<input class="block py-2.5 px-0 w-full text-sm text-text-main bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer transition-colors duration-300" id="subject" name="subject" placeholder=" " required="" type="text"/>
+<label class="peer-focus:font-medium absolute text-sm text-text-muted dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="subject">件名 (Subject)</label>
+</div>
+<div class="group relative z-0 w-full">
+<textarea class="block py-2.5 px-0 w-full text-sm text-text-main bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer transition-colors duration-300 resize-none" id="message" name="message" placeholder=" " required="" rows="4"></textarea>
+<label class="peer-focus:font-medium absolute text-sm text-text-muted dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="message">お問い合わせ内容 (Message)</label>
+</div>
+<div class="pt-6 text-center">
+<button class="group relative inline-flex items-center justify-center px-12 py-3 overflow-hidden font-serif font-medium tracking-tighter text-white bg-text-main dark:bg-white dark:text-background-dark hover:bg-primary dark:hover:bg-gray-200 transition-all duration-300 ease-out shadow-sm hover:shadow-lg" type="submit">
+<span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-primary dark:bg-primary/20 rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+<span class="relative tracking-widest">送信する (Send)</span>
+</button>
+</div>
+</form>
+<div class="mt-24 pt-12 border-t border-gray-200/60 dark:border-gray-800/60 max-w-2xl mx-auto w-full flex flex-col items-center gap-8">
+<div class="flex flex-col items-center gap-2">
+<p class="text-xs font-bold text-text-muted uppercase tracking-widest mb-2">Direct Contact</p>
+<a class="font-serif text-lg md:text-xl text-text-main dark:text-white hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1" href="mailto:hello@yuna-tanaka.jp">
+                            hello@yuna-tanaka.jp
+                        </a>
+</div>
+<div class="flex gap-6 mt-4">
+<a class="group flex flex-col items-center gap-2 text-text-muted hover:text-primary transition-colors" href="#">
+<div class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="text-xs font-bold">IG</span>
+</div>
+<span class="text-[10px] tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase">Instagram</span>
+</a>
+<a class="group flex flex-col items-center gap-2 text-text-muted hover:text-primary transition-colors" href="#">
+<div class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="text-xs font-bold">X</span>
+</div>
+<span class="text-[10px] tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase">Twitter / X</span>
+</a>
+</div>
+</div>
+</div>
+<footer class="w-full py-8 text-center border-t border-gray-100 dark:border-gray-800/50 mt-auto">
+<p class="text-[10px] text-gray-400 uppercase tracking-widest">© 2024 Yuna Tanaka. All rights reserved.</p>
+</footer>
+</main>
+</div>
+
+</body></html>
