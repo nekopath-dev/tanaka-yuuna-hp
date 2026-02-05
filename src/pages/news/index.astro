@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getGlobalSettings, getNews } from "../../lib/microcms";
+
+const [settings, news] = await Promise.all([
+  getGlobalSettings(),
+  getNews(),
+]);
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}.${m}.${day}`;
+}
+---
+
+<BaseLayout title="最新情報" settings={settings}>
+  <!-- Title Section -->
+  <section class="w-full max-w-5xl mx-auto px-6 md:px-20 pt-24 pb-8">
+    <div class="mb-20 border-b border-gray-200 dark:border-gray-800 pb-8 flex justify-between items-end">
+      <div>
+        <h2 class="font-serif text-4xl md:text-5xl font-light tracking-widest text-text-main dark:text-white">NEWS</h2>
+        <p class="mt-3 text-xs font-medium tracking-[0.3em] text-text-muted uppercase">Updates & Exhibitions</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- News List -->
+  <section class="w-full max-w-5xl mx-auto px-6 md:px-20 pb-32">
+    <div class="flex flex-col gap-12">
+      {news.map((item) => (
+        <article class="group flex flex-col md:flex-row gap-8 md:gap-12 border-b border-gray-100 dark:border-gray-800/50 pb-12">
+          <!-- Date & Category -->
+          <div class="md:w-32 flex flex-row md:flex-col items-center md:items-start gap-3 shrink-0 pt-1">
+            <time class="font-display text-sm text-text-muted font-light tracking-wide">{formatDate(item.published_at)}</time>
+            <span class="px-2 py-0.5 border border-gray-300 dark:border-gray-700 rounded-sm text-[10px] uppercase tracking-wider text-text-muted bg-white/50 dark:bg-black/20">{item.category}</span>
+          </div>
+          <!-- Content -->
+          <div class="flex-1 flex flex-col gap-4">
+            <a href={`/news/${item.id}`}>
+              <h3 class="font-serif text-2xl font-bold text-text-main dark:text-white group-hover:text-primary transition-colors leading-snug">
+                {item.title}
+              </h3>
+            </a>
+            {item.subtitle_en && (
+              <p class="text-xs text-text-muted tracking-wider uppercase">{item.subtitle_en}</p>
+            )}
+            <!-- Event Info -->
+            {item.event_venue && (
+              <p class="text-sm text-text-muted leading-relaxed">
+                {item.event_venue}
+                {item.event_date_start && ` | ${formatDate(item.event_date_start)}`}
+                {item.event_date_end && ` – ${formatDate(item.event_date_end)}`}
+              </p>
+            )}
+            <div class="pt-2 flex gap-4">
+              <a class="inline-flex items-center text-xs font-bold tracking-widest text-primary hover:text-primary/70 transition-colors uppercase border-b border-primary/20 pb-1" href={`/news/${item.id}`}>
+                More Details <span class="material-symbols-outlined text-[14px] ml-1">arrow_forward</span>
+              </a>
+              {item.url && (
+                <a class="inline-flex items-center text-xs font-bold tracking-widest text-primary hover:text-primary/70 transition-colors uppercase border-b border-primary/20 pb-1" href={item.url} target="_blank" rel="noopener noreferrer">
+                  Official Site <span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span>
+                </a>
+              )}
+            </div>
+          </div>
+          <!-- Thumbnail -->
+          <div class="w-full md:w-48 shrink-0 order-first md:order-last">
+            {item.main_image ? (
+              <div class="aspect-[4/3] overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800 relative shadow-sm">
+                <div
+                  class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={`background-image: url("${item.main_image.url}?w=400&q=80");`}
+                />
+                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-500"></div>
+              </div>
+            ) : (
+              <div class="hidden md:flex aspect-[4/3] rounded-lg border border-gray-100 dark:border-gray-800 items-center justify-center bg-gray-50 dark:bg-gray-900/50">
+                <span class="material-symbols-outlined text-gray-300 dark:text-gray-700 font-light text-4xl">newspaper</span>
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

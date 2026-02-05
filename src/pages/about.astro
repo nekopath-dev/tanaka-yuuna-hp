@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getGlobalSettings } from "../lib/microcms";
+
+const settings = await getGlobalSettings();
+---
+
+<BaseLayout title="作家について" settings={settings}>
+  <!-- Hero Image -->
+  <section class="w-full h-[40vh] md:h-[60vh] overflow-hidden relative grayscale-[30%]">
+    {settings.profile_image && (
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style={`background-image: url("${settings.profile_image.url}?w=1920&q=80");`}
+      />
+    )}
+    <div class="absolute inset-0 bg-white/20 dark:bg-black/30"></div>
+  </section>
+
+  <!-- Profile Content -->
+  <section class="px-6 md:px-24 py-20 md:py-32 bg-background-light dark:bg-background-dark">
+    <div class="max-w-4xl mx-auto flex flex-col gap-20">
+      <!-- Name & Bio -->
+      <div class="flex flex-col gap-10">
+        <div class="flex flex-col gap-3 border-l-[3px] border-primary pl-6">
+          <h1 class="font-serif text-3xl md:text-5xl font-bold text-text-main dark:text-white tracking-widest leading-tight">{settings.artist_name}</h1>
+          <span class="text-sm font-display tracking-[0.25em] text-primary uppercase mt-1">Yuna Tanaka</span>
+        </div>
+        <div class="font-serif text-base md:text-lg leading-[1.8] text-text-main dark:text-gray-300 space-y-8 text-justify mt-4 rich-content">
+          <Fragment set:html={settings.about_text} />
+        </div>
+      </div>
+
+      <div class="w-full h-[1px] bg-gray-200 dark:bg-gray-800"></div>
+
+      <!-- CV Timeline -->
+      {settings.cv_list && settings.cv_list.length > 0 && (
+        <div class="flex flex-col gap-12">
+          <h2 class="font-serif text-2xl text-text-main dark:text-white tracking-widest flex items-center gap-4">
+            略歴 <span class="text-xs font-display text-primary tracking-wider uppercase opacity-80 pt-1">Biography</span>
+          </h2>
+          <dl class="flex flex-col gap-8 font-serif">
+            {settings.cv_list.map((item) => (
+              <div class="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-6 items-baseline group">
+                <dt class="text-text-muted font-display text-sm border-b border-transparent group-hover:border-primary/50 transition-colors pb-1">{item.year}</dt>
+                <dd class="text-text-main dark:text-gray-300">{item.content}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

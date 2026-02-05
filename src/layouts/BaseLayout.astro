@@ -1,0 +1,49 @@
+---
+import type { GlobalSettings } from "../types/microcms";
+import Sidebar from "../components/Sidebar.astro";
+import MobileHeader from "../components/MobileHeader.astro";
+import Footer from "../components/Footer.astro";
+import FooterMinimal from "../components/FooterMinimal.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  settings: GlobalSettings;
+  minimalFooter?: boolean;
+}
+
+const { title, settings, minimalFooter = false } = Astro.props;
+const pageTitle = title ? `${title} | ${settings.site_title}` : settings.site_title;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html class="light" lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{pageTitle}</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-200 font-display transition-colors duration-300 antialiased selection:bg-primary/20">
+  <div class="flex flex-col md:flex-row min-h-screen w-full relative">
+    <!-- Mobile Header -->
+    <MobileHeader settings={settings} />
+    <!-- Sidebar Navigation (Desktop) -->
+    <Sidebar currentPath={currentPath} settings={settings} />
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col w-full min-w-0">
+      <slot />
+      {minimalFooter
+        ? <FooterMinimal settings={settings} />
+        : <Footer settings={settings} />
+      }
+    </main>
+  </div>
+</body>
+</html>

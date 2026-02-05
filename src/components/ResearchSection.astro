@@ -1,0 +1,37 @@
+---
+import type { Research } from "../types/microcms";
+
+interface Props {
+  research: Research[];
+}
+
+const { research } = Astro.props;
+---
+
+<section class="py-20 bg-white dark:bg-[#151515]" id="research">
+  <div class="container mx-auto px-6 md:px-20">
+    <div class="flex items-end gap-4 mb-4">
+      <h2 class="font-serif text-3xl font-bold tracking-tight text-text-main dark:text-white">Research</h2>
+      <span class="text-sm text-primary font-medium mb-1 tracking-wider opacity-80">思考の断片</span>
+    </div>
+    <p class="text-sm md:text-base text-text-muted leading-[1.8] max-w-xl mb-12">
+      「手ざわり」の復権、関係性の美学、そしてケアの倫理。<br />
+      制作の背景にあるリサーチと、日々のアトリエからの記録。
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {research.map((item) => {
+        const href = `/research/${item.id}`;
+        return (
+          <a href={href} class="group flex flex-col gap-4 p-6 border border-gray-200 dark:border-gray-800 rounded hover:border-primary/40 transition-colors">
+            <span class="material-symbols-outlined text-primary/40 text-3xl group-hover:text-primary transition-colors">{item.icon}</span>
+            <h3 class="font-serif text-lg text-text-main dark:text-white group-hover:text-primary transition-colors">{item.title}</h3>
+            <p class="text-xs text-text-muted leading-relaxed">{item.summary}</p>
+            <span class="text-xs text-primary font-medium mt-auto flex items-center gap-1 group-hover:gap-2 transition-all">
+              Read more <span class="material-symbols-outlined text-xs">arrow_forward</span>
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

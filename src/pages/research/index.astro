@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getGlobalSettings, getResearch } from "../../lib/microcms";
+
+const [settings, research] = await Promise.all([
+  getGlobalSettings(),
+  getResearch(),
+]);
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}.${m}.${day}`;
+}
+---
+
+<BaseLayout title="思考の断片" settings={settings}>
+  <!-- Hero Section -->
+  <section class="relative w-full h-[55vh] overflow-hidden">
+    {research[0]?.main_image ? (
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style={`background-image: url("${research[0].main_image.url}?w=1920&q=80");`}
+      />
+    ) : settings.hero_image ? (
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style={`background-image: url("${settings.hero_image.url}?w=1920&q=80");`}
+      />
+    ) : (
+      <div class="absolute inset-0 bg-gray-200 dark:bg-gray-800" />
+    )}
+    <div class="absolute inset-0 bg-background-light/40 dark:bg-black/50 backdrop-blur-[2px]"></div>
+    <div class="relative z-10 h-full flex flex-col justify-end pb-20 px-6 md:px-24">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="h-[1px] w-12 bg-primary"></span>
+          <span class="text-xs font-bold tracking-[0.2em] text-primary uppercase">Philosophy & Studies</span>
+        </div>
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-text-main dark:text-white font-light tracking-wider leading-tight">
+          研究・制作ノート
+        </h1>
+        <p class="mt-6 text-sm md:text-base text-text-main/80 dark:text-gray-200/80 font-serif tracking-widest leading-relaxed max-w-lg">
+          手仕事の中に潜む思考の痕跡と、<br />
+          素材との対話から生まれる言葉たち。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research List -->
+  <section class="px-6 md:px-24 py-24 bg-background-light dark:bg-background-dark">
+    <div class="max-w-3xl mx-auto flex flex-col gap-28">
+      {research.map((item, i) => (
+        <>
+          {i > 0 && <div class="w-full h-[1px] bg-gray-200 dark:bg-gray-800"></div>}
+          <article class="flex flex-col gap-6 group">
+            <div class="flex items-center gap-4 text-[10px] md:text-xs font-medium text-text-muted tracking-[0.15em] uppercase">
+              <span>{formatDate(item.published_at)}</span>
+              <span class="w-8 h-[1px] bg-gray-300 dark:bg-gray-700"></span>
+              <span>{item.category}</span>
+            </div>
+            <div class="flex flex-col gap-4">
+              <a href={`/research/${item.id}`}>
+                <h2 class="font-serif text-2xl md:text-4xl text-text-main dark:text-white leading-tight group-hover:text-primary transition-colors duration-500 cursor-pointer">
+                  {item.title}
+                </h2>
+              </a>
+              <p class="text-sm md:text-base text-text-muted leading-[1.8] font-light text-justify">
+                {item.summary}
+              </p>
+            </div>
+            <div class="mt-2">
+              <a class="inline-flex items-center gap-2 text-xs md:text-sm font-bold text-text-main dark:text-white border-b border-gray-300 dark:border-gray-700 pb-1 hover:border-primary hover:text-primary transition-all duration-300" href={`/research/${item.id}`}>
+                Read More <span class="material-symbols-outlined text-base">arrow_forward</span>
+              </a>
+            </div>
+          </article>
+        </>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

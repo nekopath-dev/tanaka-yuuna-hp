@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+import NewsSection from "../components/NewsSection.astro";
+import WorksSection from "../components/WorksSection.astro";
+import ResearchSection from "../components/ResearchSection.astro";
+import { getGlobalSettings, getWorks, getNews, getResearch } from "../lib/microcms";
+
+const [settings, works, news, research] = await Promise.all([
+  getGlobalSettings(),
+  getWorks(3),
+  getNews(3),
+  getResearch(3),
+]);
+---
+
+<BaseLayout settings={settings}>
+  <HeroSection settings={settings} />
+  <AboutSection settings={settings} />
+  <NewsSection news={news} />
+  <WorksSection works={works} />
+  <ResearchSection research={research} />
+</BaseLayout>

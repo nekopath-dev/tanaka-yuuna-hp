@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getGlobalSettings } from "../lib/microcms";
+
+const settings = await getGlobalSettings();
+---
+
+<BaseLayout title="お問い合わせ" settings={settings} minimalFooter={true}>
+  <div class="flex-1 w-full max-w-4xl mx-auto px-6 py-16 md:py-24 md:px-12 lg:px-24 flex flex-col justify-center min-h-[90vh]">
+    <!-- Title -->
+    <div class="mb-16 md:mb-24 text-center">
+      <h2 class="font-serif text-4xl md:text-5xl font-light tracking-widest text-text-main dark:text-white mb-4">お問い合わせ</h2>
+      <p class="text-xs md:text-sm font-medium text-primary tracking-[0.3em] uppercase">Contact</p>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-16 max-w-2xl mx-auto text-center">
+      <p class="font-serif text-text-main dark:text-gray-200 leading-loose text-sm md:text-base">
+        {settings.contact_description}
+      </p>
+    </div>
+
+    <!-- Contact Form -->
+    <form class="w-full max-w-2xl mx-auto space-y-12">
+      <div class="group relative z-0 w-full">
+        <input
+          class="block py-2.5 px-0 w-full text-sm text-text-main bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer transition-colors duration-300"
+          id="name" name="name" placeholder=" " required type="text"
+        />
+        <label class="peer-focus:font-medium absolute text-sm text-text-muted dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="name">
+          お名前 (Name)
+        </label>
+      </div>
+      <div class="group relative z-0 w-full">
+        <input
+          class="block py-2.5 px-0 w-full text-sm text-text-main bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer transition-colors duration-300"
+          id="email" name="email" placeholder=" " required type="email"
+        />
+        <label class="peer-focus:font-medium absolute text-sm text-text-muted dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="email">
+          メールアドレス (Email)
+        </label>
+      </div>
+      <div class="group relative z-0 w-full">
+        <input
+          class="block py-2.5 px-0 w-full text-sm text-text-main bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer transition-colors duration-300"
+          id="subject" name="subject" placeholder=" " required type="text"
+        />
+        <label class="peer-focus:font-medium absolute text-sm text-text-muted dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="subject">
+          件名 (Subject)
+        </label>
+      </div>
+      <div class="group relative z-0 w-full">
+        <textarea
+          class="block py-2.5 px-0 w-full text-sm text-text-main bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer transition-colors duration-300 resize-none"
+          id="message" name="message" placeholder=" " required rows="4"
+        ></textarea>
+        <label class="peer-focus:font-medium absolute text-sm text-text-muted dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="message">
+          お問い合わせ内容 (Message)
+        </label>
+      </div>
+      <div class="pt-6 text-center">
+        <button
+          class="group relative inline-flex items-center justify-center px-12 py-3 overflow-hidden font-serif font-medium tracking-tighter text-white bg-text-main dark:bg-white dark:text-background-dark hover:bg-primary dark:hover:bg-gray-200 transition-all duration-300 ease-out shadow-sm hover:shadow-lg"
+          type="submit"
+        >
+          <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-primary dark:bg-primary/20 rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+          <span class="relative tracking-widest">送信する (Send)</span>
+        </button>
+      </div>
+    </form>
+
+    <!-- Direct Contact -->
+    <div class="mt-24 pt-12 border-t border-gray-200/60 dark:border-gray-800/60 max-w-2xl mx-auto w-full flex flex-col items-center gap-8">
+      <div class="flex flex-col items-center gap-2">
+        <p class="text-xs font-bold text-text-muted uppercase tracking-widest mb-2">Direct Contact</p>
+        <a class="font-serif text-lg md:text-xl text-text-main dark:text-white hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1" href={`mailto:${settings.contact_email}`}>
+          {settings.contact_email}
+        </a>
+      </div>
+      <div class="flex gap-6 mt-4">
+        {settings.instagram_url && (
+          <a class="group flex flex-col items-center gap-2 text-text-muted hover:text-primary transition-colors" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
+            <div class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <span class="text-xs font-bold">IG</span>
+            </div>
+            <span class="text-[10px] tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase">Instagram</span>
+          </a>
+        )}
+        {settings.x_url && (
+          <a class="group flex flex-col items-center gap-2 text-text-muted hover:text-primary transition-colors" href={settings.x_url} target="_blank" rel="noopener noreferrer">
+            <div class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <span class="text-xs font-bold">X</span>
+            </div>
+            <span class="text-[10px] tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase">X</span>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

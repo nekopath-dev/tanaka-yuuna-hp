@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getGlobalSettings, getResearch } from "../../lib/microcms";
+import type { Research } from "../../types/microcms";
+
+export async function getStaticPaths() {
+  const research = await getResearch();
+  return research.map((item) => ({
+    params: { id: item.id },
+    props: {
+      research: item,
+      allResearch: research,
+    },
+  }));
+}
+
+interface Props {
+  research: Research;
+  allResearch: Research[];
+}
+
+const { research, allResearch } = Astro.props;
+const settings = await getGlobalSettings();
+
+// Related articles: same category, excluding current, max 2
+const related = allResearch
+  .filter((r) => r.id !== research.id && r.category === research.category)
+  .slice(0, 2);
+
+function formatDateEN(dateStr: string): string {
+  const d = new Date(dateStr);
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
+---
+
+<BaseLayout title={research.title} settings={settings}>
+  <article class="w-full max-w-5xl mx-auto pt-24 pb-32 px-6 md:px-12 lg:px-24">
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-text-muted mb-12">
+      <a class="hover:text-primary transition-colors" href="/research">Research</a>
+      <span class="w-4 h-[1px] bg-gray-300 dark:bg-gray-700"></span>
+      <span class="text-primary font-medium">{research.category}</span>
+      <span class="w-4 h-[1px] bg-gray-300 dark:bg-gray-700"></span>
+      <span>{formatDateEN(research.published_at)}</span>
+    </div>
+
+    <!-- Title -->
+    <header class="mb-20 md:mb-28">
+      <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl font-medium leading-tight text-text-main dark:text-white mb-6">
+        {research.title}
+      </h1>
+      {research.subtitle_en && (
+        <p class="font-serif text-lg md:text-xl text-text-muted italic opacity-80">
+          {research.subtitle_en}
+        </p>
+      )}
+    </header>
+
+    <!-- Main Image -->
+    {research.main_image && (
+      <figure class="w-full mb-20 md:mb-28 group overflow-hidden rounded-sm">
+        <div
+          class="aspect-[21/9] w-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out transform group-hover:scale-[1.01]"
+          style={`background-image: url("${research.main_image.url}?w=1920&q=80");`}
+        />
+      </figure>
+    )}
+
+    <!-- Content -->
+    <div class="max-w-2xl mx-auto rich-content text-base md:text-lg leading-[2.0] text-text-main dark:text-gray-300 font-light text-justify">
+      {research.content ? (
+        <Fragment set:html={research.content} />
+      ) : (
+        <p class="text-text-muted">{research.summary}</p>
+      )}
+    </div>
+  </article>
+
+  <!-- Back + Related -->
+  <footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 py-20 px-6 md:px-24">
+    <div class="max-w-5xl mx-auto">
+      <!-- Back Button -->
+      <div class="mb-16 flex justify-center">
+        <a class="group inline-flex items-center gap-3 px-8 py-4 border border-text-muted/30 text-sm tracking-widest uppercase hover:bg-text-main hover:text-white hover:border-transparent dark:hover:bg-white dark:hover:text-background-dark transition-all duration-300" href="/research">
+          <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+          Back to Research
+        </a>
+      </div>
+
+      <!-- Related Articles -->
+      {related.length > 0 && (
+        <div class="flex flex-col gap-8">
+          <h3 class="font-serif text-xl text-text-main dark:text-white mb-4 border-b border-gray-200 dark:border-gray-800 pb-4">関連記事 (Related Articles)</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {related.map((item) => (
+              <a class="group flex gap-6 items-center" href={`/research/${item.id}`}>
+                {item.main_image ? (
+                  <div class="w-24 h-24 shrink-0 overflow-hidden rounded-sm bg-gray-200">
+                    <div
+                      class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                      style={`background-image: url("${item.main_image.url}?w=200&q=80");`}
+                    />
+                  </div>
+                ) : (
+                  <div class="w-24 h-24 shrink-0 rounded-sm bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-gray-300 dark:text-gray-700">{item.icon}</span>
+                  </div>
+                )}
+                <div class="flex flex-col gap-2">
+                  <span class="text-[10px] text-primary uppercase tracking-widest">{item.category}</span>
+                  <h4 class="font-serif text-lg leading-snug group-hover:text-primary transition-colors">{item.title}</h4>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </footer>
+</BaseLayout>

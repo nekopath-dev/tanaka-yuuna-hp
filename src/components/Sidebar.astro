@@ -1,0 +1,62 @@
+---
+import type { GlobalSettings } from "../types/microcms";
+
+interface Props {
+  currentPath: string;
+  settings: GlobalSettings;
+}
+
+const { currentPath, settings } = Astro.props;
+
+const navItems = [
+  { href: "/about", icon: "person", label: "作家について (About)" },
+  { href: "/news", icon: "newspaper", label: "最新情報 (News)" },
+  { href: "/works", icon: "grid_view", label: "作品 (Works)" },
+  { href: "/research", icon: "auto_stories", label: "思考の断片 (Research)" },
+  { href: "/contact", icon: "mail", label: "お問い合わせ (Contact)" },
+];
+
+function isActive(href: string): boolean {
+  if (href === "/") return currentPath === "/";
+  return currentPath.startsWith(href);
+}
+---
+
+<aside class="hidden md:flex flex-col w-64 h-screen sticky top-0 border-r border-gray-200/50 dark:border-gray-800/50 bg-background-light dark:bg-background-dark z-40 p-10 justify-between shrink-0">
+  <!-- Logo Area -->
+  <div class="flex flex-col gap-6">
+    <a href="/" class="flex flex-col gap-1">
+      <h1 class="font-serif text-2xl font-bold tracking-widest text-text-main dark:text-white">{settings.artist_name}</h1>
+      <p class="text-primary text-xs font-medium tracking-[0.2em] uppercase mt-2">{settings.artist_subtitle}</p>
+    </a>
+  </div>
+  <!-- Navigation Links -->
+  <nav class="flex flex-col gap-8">
+    {navItems.map((item) => (
+      <a
+        class={`group flex items-center gap-4 transition-colors duration-300 ${
+          isActive(item.href)
+            ? "text-primary"
+            : "text-text-muted hover:text-primary"
+        }`}
+        href={item.href}
+      >
+        <span class="material-symbols-outlined text-[20px] font-light">{item.icon}</span>
+        <span class="text-sm font-medium tracking-wide group-hover:translate-x-1 transition-transform duration-300">{item.label}</span>
+      </a>
+    ))}
+  </nav>
+  <!-- Social -->
+  <div class="flex gap-4 opacity-50">
+    {settings.instagram_url && (
+      <a class="hover:text-primary transition-colors" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
+        <span class="text-xs">IG</span>
+      </a>
+    )}
+    {settings.x_url && (
+      <a class="hover:text-primary transition-colors" href={settings.x_url} target="_blank" rel="noopener noreferrer">
+        <span class="text-xs">X</span>
+      </a>
+    )}
+  </div>
+</aside>
