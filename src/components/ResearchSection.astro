@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { research } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <section class="py-20 bg-white dark:bg-[#151515]" id="research">
@@ -20,7 +21,7 @@ const { research } = Astro.props;
     </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {research.map((item) => {
-        const href = `/research/${item.id}`;
+        const href = `${base}/research/${item.id}`;
         return (
           <a href={href} class="group flex flex-col gap-4 p-6 border border-gray-200 dark:border-gray-800 rounded hover:border-primary/40 transition-colors">
             <span class="material-symbols-outlined text-primary/40 text-3xl group-hover:text-primary transition-colors">{item.icon}</span>

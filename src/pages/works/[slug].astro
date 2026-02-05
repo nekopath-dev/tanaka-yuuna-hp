@@ -23,13 +23,14 @@ interface Props {
 
 const { work, prevWork, nextWork } = Astro.props;
 const settings = await getGlobalSettings();
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout title={work.title} settings={settings}>
   <article class="flex flex-col w-full">
     <!-- Back Button -->
     <div class="px-6 md:px-20 py-8 md:py-10 border-b border-gray-100 dark:border-gray-800/50 flex items-center justify-between">
-      <a class="group flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-text-muted hover:text-primary transition-colors" href="/works">
+      <a class="group flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-text-muted hover:text-primary transition-colors" href={`${base}/works`}>
         <span class="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">arrow_back</span>
         Back to Works
       </a>
@@ -123,7 +124,7 @@ const settings = await getGlobalSettings();
     <nav class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111111]">
       <div class="flex flex-col md:flex-row h-auto md:h-40">
         {prevWork ? (
-          <a class="flex-1 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-800 p-8 md:p-12 flex flex-col justify-center items-start group hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors" href={`/works/${prevWork.slug}`}>
+          <a class="flex-1 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-800 p-8 md:p-12 flex flex-col justify-center items-start group hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors" href={`${base}/works/${prevWork.slug}`}>
             <span class="text-xs text-text-muted uppercase tracking-widest mb-2 flex items-center gap-2">
               <span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
               Previous Work
@@ -134,7 +135,7 @@ const settings = await getGlobalSettings();
           <div class="flex-1 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-800 p-8 md:p-12"></div>
         )}
         {nextWork ? (
-          <a class="flex-1 p-8 md:p-12 flex flex-col justify-center items-end group hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors" href={`/works/${nextWork.slug}`}>
+          <a class="flex-1 p-8 md:p-12 flex flex-col justify-center items-end group hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors" href={`${base}/works/${nextWork.slug}`}>
             <span class="text-xs text-text-muted uppercase tracking-widest mb-2 flex items-center gap-2">
               Next Work
               <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
