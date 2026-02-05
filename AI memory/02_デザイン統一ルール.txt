@@ -1,0 +1,37 @@
+====================================
+デザイン統一ルール（絶対守ること）
+====================================
+
+参考デザイン（9ファイル）にはすべて間違いが含まれていた。
+以下のルールで統一済み。今後も絶対にこのルールを守ること。
+
+■ 名前の表記
+  正: 田中 優菜
+  誤: 田中 結菜 ← デザインAIが間違えた
+
+■ 肩書の表記
+  正: 染織造形作家（CMSから取得: settings.artist_subtitle）
+  誤: Textile Artist ← デザインAIが間違えた
+
+■ SNS表記
+  正: IG + X
+  誤: IG + TW / IG + Twitter
+
+■ Copyright
+  正: CMSの settings.copyright_text から取得
+  誤: © 2024 Yuna Tanaka ← ハードコード禁止
+
+■ サイドバーナビゲーション（全ページ共通・5項目固定）
+  1. 作家について (About)     → person      → /about
+  2. 最新情報 (News)          → newspaper   → /news
+  3. 作品 (Works)             → grid_view   → /works
+  4. 思考の断片 (Research)    → auto_stories → /research
+  5. お問い合わせ (Contact)   → mail        → /contact
+
+■ フッター
+  - 通常ページ: Footer.astro（フル版: 連絡先 + Newsletter + Copyright）
+  - Contactページのみ: FooterMinimal.astro（Copyright + SNSリンクのみ）
+
+■ テキストのハードコード禁止
+  - アーティスト名、肩書、メール、Copyright、SNSハンドルなど
+    → すべて MicroCMS の global_settings から取得すること

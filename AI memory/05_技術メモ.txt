@@ -1,0 +1,51 @@
+====================================
+技術メモ（実装で注意すること）
+====================================
+
+■ Astro SSG の動的ルート
+  - [slug].astro / [id].astro では必ず getStaticPaths() を実装
+  - 全コンテンツの静的パスを生成する必要がある
+  - 前後ナビのデータは getStaticPaths の props で渡す
+
+■ MicroCMS 画像最適化
+  - 画像URLの末尾に ?w=XXX&q=80 を必ず付与
+  - サイズ目安:
+    - ヒーロー/フル幅: ?w=1920&q=80
+    - ニュース詳細画像: ?w=1200&q=80
+    - ギャラリー/中画像: ?w=800&q=80
+    - 一覧サムネイル: ?w=600&q=80
+    - 小サムネイル: ?w=400&q=80
+    - 関連記事サムネ: ?w=200&q=80
+
+■ リッチエディタ（CMS の HTML）の表示
+  - <Fragment set:html={content} /> を使用
+  - .rich-content クラスで h2, h3, p, img, blockquote 等のスタイル適用
+  - global.css に定義済み
+
+■ Tailwind カスタムカラー
+  - primary: #0505c7（鮮やかな青）
+  - background-light: #f9f9f7
+  - background-dark: #1a1a1a
+  - text-main: #2d2d2d
+  - text-muted: #6e6e6e
+
+■ フォント
+  - display: Inter（UIテキスト）
+  - serif: Noto Serif JP（見出し・本文）
+  - Google Fonts + Material Symbols Outlined を CDN で読み込み
+
+■ ダークモード
+  - darkMode: "class" 方式
+  - html タグに class="light" がデフォルト
+  - 全コンポーネントで dark: プレフィックスを使用
+
+■ GitHub Actions デプロイ
+  - トリガー: push (main) + repository_dispatch (MicroCMS webhook) + 手動
+  - MicroCMS の Webhook URL: https://api.github.com/repos/nekopath-dev/tanaka-yuuna-hp/dispatches
+    （GitHub Personal Access Token が必要）
+  - Secrets に MICROCMS_SERVICE_DOMAIN と MICROCMS_API_KEY を設定
+
+■ デプロイ前に必要な設定
+  1. GitHubリポジトリの Settings > Pages > Source を「GitHub Actions」に変更
+  2. Secrets に環境変数を追加
+  3. MicroCMS 管理画面で Webhook を設定（repository_dispatch）

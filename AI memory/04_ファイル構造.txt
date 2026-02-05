@@ -1,0 +1,67 @@
+====================================
+ファイル構造（全ファイル一覧）
+====================================
+
+tanaka-yuuna-hp/
+├── astro.config.mjs          # Astro設定（output: static, site URL）
+├── package.json              # 依存関係（astro, tailwind, microcms-js-sdk）
+├── tsconfig.json             # TypeScript strict + パスエイリアス @/*
+├── tailwind.config.mjs       # カスタム色・フォント・角丸
+├── .env.example              # 環境変数テンプレート
+├── .gitignore                # node_modules, dist, .env, .astro
+│
+├── src/
+│   ├── styles/
+│   │   └── global.css              # @tailwind + カスタムCSS（スクロールバー, rich-content等）
+│   │
+│   ├── types/
+│   │   └── microcms.ts             # 型定義（GlobalSettings, Work, News, Research）
+│   │
+│   ├── lib/
+│   │   └── microcms.ts             # SDK初期化 + 全データ取得関数（10関数）
+│   │
+│   ├── layouts/
+│   │   └── BaseLayout.astro        # 共通レイアウト（head + Sidebar + MobileHeader + Footer）
+│   │
+│   ├── components/
+│   │   ├── Sidebar.astro           # デスクトップサイドバー（5項目ナビ + SNS）
+│   │   ├── MobileHeader.astro      # モバイルヘッダー（sticky）
+│   │   ├── Footer.astro            # フルフッター（Contact以外で使用）
+│   │   ├── FooterMinimal.astro     # 最小フッター（Contactページ専用）
+│   │   ├── HeroSection.astro       # ホーム: ヒーロー（縦書き + ステートメント）
+│   │   ├── AboutSection.astro      # ホーム: イントロ（リッチテキスト）
+│   │   ├── NewsSection.astro       # ホーム: ニュース最新3件
+│   │   ├── WorksSection.astro      # ホーム: 作品ピックアップ3件
+│   │   └── ResearchSection.astro   # ホーム: リサーチ3件
+│   │
+│   └── pages/
+│       ├── index.astro             # ホームページ（6セクション構成）
+│       ├── about.astro             # About（プロフィール + CV略歴）
+│       ├── contact.astro           # お問い合わせ（フォーム + 直接連絡先）
+│       ├── works/
+│       │   ├── index.astro         # 作品一覧（カテゴリフィルタ + グリッド）
+│       │   └── [slug].astro        # 作品詳細（前後ナビ + ギャラリー）
+│       ├── news/
+│       │   ├── index.astro         # ニュース一覧（カード型リスト）
+│       │   └── [id].astro          # ニュース詳細（イベント情報サイドバー）
+│       └── research/
+│           ├── index.astro         # Research一覧（ヒーロー + 記事リスト）
+│           └── [id].astro          # Research詳細（関連記事付き）
+│
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # GitHub Actions（push + MicroCMS webhook）
+│
+├── 参考デザイン/                    # デザインAIの出力（9バリエーション）
+│   └── stitch_yuna_tanaka_portfolio_homepage/
+│       ├── yuna_tanaka_minimalist_portfolio_1/  # Home
+│       ├── ...2/  # About
+│       ├── ...3/  # Works一覧
+│       ├── ...4/  # Research一覧
+│       ├── ...5/  # News一覧
+│       ├── ...6/  # Contact
+│       ├── ...7/  # Work詳細
+│       ├── ...8/  # Research詳細
+│       └── ...9/  # News詳細
+│
+└── AI memory/                       # このフォルダ（重要メモ）

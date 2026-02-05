@@ -1,0 +1,26 @@
+====================================
+プロジェクト概要
+====================================
+
+■ アーティスト情報
+- 名前: 田中 優菜（たなか ゆうな）※「結菜」ではない！
+- 肩書: 染織造形作家 ※「Textile Artist」ではない！
+- 出身: 広島県（備後地方）
+- 活動: 綴織（つづれおり）、備後絣アップサイクル、ソフトスカルプチャー
+- 特徴: 遊び心のある作品（えびフライバッグ、愛おもう屋台など）
+
+■ 技術スタック
+- フレームワーク: Astro (SSG / Static Site Generation)
+- CMS: MicroCMS (microcms-js-sdk)
+- CSS: Tailwind CSS 3
+- TypeScript: strict モード
+- デプロイ: GitHub Pages (nekopath-dev.github.io)
+- CI/CD: GitHub Actions (push + MicroCMS webhook)
+
+■ リポジトリ
+- URL: https://github.com/nekopath-dev/tanaka-yuuna-hp.git
+- サイトURL: https://nekopath-dev.github.io
+
+■ 環境変数（GitHub Secrets に設定が必要）
+- MICROCMS_SERVICE_DOMAIN
+- MICROCMS_API_KEY

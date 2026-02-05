@@ -1,0 +1,61 @@
+====================================
+ページ構成とCMSデータマッピング
+====================================
+
+■ 全9ページの一覧
+
+  URL                  | ページ         | データソース
+  ---------------------|---------------|----------------------------------
+  /                    | ホーム         | global_settings + works(3) + news(3) + research(3)
+  /about               | About          | global_settings
+  /works               | 作品一覧       | works (全件)
+  /works/[slug]        | 作品詳細       | works (1件 + 前後)
+  /news                | ニュース一覧   | news (全件)
+  /news/[id]           | ニュース詳細   | news (1件 + 前後)
+  /research            | Research一覧   | research (全件)
+  /research/[id]       | Research詳細   | research (1件 + 関連)
+  /contact             | お問い合わせ   | global_settings
+
+■ データの流れ
+
+  全ページ共通:
+    BaseLayout → Sidebar (settings.artist_name, artist_subtitle, SNS)
+              → MobileHeader (settings.artist_name, artist_subtitle)
+              → Footer or FooterMinimal (settings.contact_*, copyright_text)
+
+  ホーム:
+    HeroSection    ← settings.hero_copy_jp, hero_copy_en, hero_image, statement
+    AboutSection   ← settings.about_subtitle, about_text
+    NewsSection    ← news[] (最新3件)
+    WorksSection   ← works[] (最新3件)
+    ResearchSection← research[] (最新3件)
+
+  About:
+    ページ固有     ← settings.profile_image, about_text, cv_list[]
+
+  Works一覧:
+    グリッド       ← works[] (全件: title, slug, main_image, gallery, material, year, category)
+
+  Works詳細:
+    詳細           ← work (main_image, title, subtitle_en, year, technique, material, description, gallery[])
+    前後ナビ       ← prevWork, nextWork (getStaticPaths で渡す)
+
+  News一覧:
+    カードリスト   ← news[] (全件: published_at, category, title, subtitle_en, main_image, event_*, url)
+
+  News詳細:
+    詳細           ← news (category, published_at, title, subtitle_en, main_image, content, event_*)
+    前後ナビ       ← prevNews, nextNews
+
+  Research一覧:
+    ヒーロー       ← research[0].main_image or settings.hero_image
+    記事リスト     ← research[] (published_at, category, title, summary)
+
+  Research詳細:
+    詳細           ← research (category, published_at, title, subtitle_en, main_image, content)
+    関連記事       ← allResearch (同カテゴリ、最大2件)
+
+  Contact:
+    フォーム       ← 静的HTML
+    直接連絡先     ← settings.contact_email, contact_description
+    SNS            ← settings.instagram_url, x_url

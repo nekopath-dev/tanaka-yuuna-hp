@@ -1,0 +1,78 @@
+====================================
+MicroCMS API設計（4つのエンドポイント）
+====================================
+
+■ ① global_settings（オブジェクト形式）
+  サイト全体の設定。1つだけ存在。
+
+  フィールド:
+  - site_title        : サイト名
+  - artist_name       : アーティスト名（田中 優菜）
+  - artist_subtitle   : 肩書き（染織造形作家）
+  - hero_copy_jp      : ヒーローコピー日本語
+  - hero_copy_en      : ヒーローコピー英語
+  - hero_image        : ヒーロー背景画像
+  - statement         : ステートメント
+  - about_subtitle    : About見出し補足
+  - about_text        : About本文（リッチエディタ）
+  - profile_image     : プロフィール画像
+  - cv_list           : 略歴（繰り返し: year, content）
+  - contact_email     : 連絡先メール
+  - contact_description: 連絡先説明文
+  - instagram_handle  : Instagramハンドル
+  - instagram_url     : Instagram URL
+  - x_handle          : Xハンドル
+  - x_url             : X URL
+  - copyright_text    : コピーライト文
+
+■ ② works（リスト形式）
+  作品データ。slug でルーティング。
+
+  フィールド:
+  - title        : 作品名
+  - slug         : URL用ID（例: indigo-flow）
+  - subtitle_en  : 英語サブタイトル
+  - category     : セレクト [Soft Sculpture, Tapestry, Social Art, Project]
+  - main_image   : メイン画像
+  - gallery      : ギャラリー画像（複数）
+  - year         : 制作年（数字）
+  - technique    : 技法
+  - material     : 素材
+  - description  : 作品解説（リッチエディタ）
+
+  ソート順: -year（新しい順）
+
+■ ③ news（リスト形式）
+  ニュース・イベント情報。id でルーティング。
+
+  フィールド:
+  - title            : タイトル
+  - subtitle_en      : 英語サブタイトル
+  - category         : セレクト [個展, 出展, お知らせ, メディア]
+  - published_at     : 公開日
+  - main_image       : メイン画像
+  - content          : 本文（リッチエディタ）
+  - event_date_start : イベント開始日（任意）
+  - event_date_end   : イベント終了日（任意）
+  - event_time       : 開場時間（任意）
+  - event_venue      : 会場名（任意）
+  - event_venue_url  : 会場URL / Google Map（任意）
+  - event_closed     : 休廊日（任意）
+  - url              : 外部リンク（任意）
+
+  ソート順: -published_at（新しい順）
+
+■ ④ research（リスト形式）
+  研究・制作ノート。id でルーティング。
+
+  フィールド:
+  - title        : タイトル
+  - subtitle_en  : 英語サブタイトル
+  - icon         : セレクト [schedule, favorite, recycling, auto_stories, palette, brush]
+  - category     : セレクト [Material Study, Philosophy, Field Work]
+  - published_at : 公開日
+  - main_image   : メイン画像
+  - summary      : 概要（テキストエリア）
+  - content      : 本文（リッチエディタ）
+
+  ソート順: -published_at（新しい順）
