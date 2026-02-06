@@ -9,30 +9,50 @@ const { research } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<section class="py-20 bg-white dark:bg-[#151515]" id="research">
-  <div class="container mx-auto px-6 md:px-20">
-    <div class="flex items-end gap-4 mb-4">
-      <h2 class="font-serif text-3xl font-bold tracking-tight text-text-main dark:text-white">Research</h2>
-      <span class="text-sm text-primary font-medium mb-1 tracking-wider opacity-80">思考の断片</span>
+<section class="py-24 px-6 md:px-20 bg-background-light dark:bg-background-dark" id="projects">
+  <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 dark:border-gray-800 pb-4">
+    <div>
+      <div class="flex items-end gap-4 mb-2">
+        <h2 class="font-serif text-3xl font-bold tracking-tight text-text-main dark:text-white">Selected Projects</h2>
+        <span class="text-sm text-primary font-medium mb-1 tracking-wider opacity-80">代表プロジェクト</span>
+      </div>
     </div>
-    <p class="text-sm md:text-base text-text-muted leading-[1.8] max-w-xl mb-12">
-      「手ざわり」の復権、関係性の美学、そしてケアの倫理。<br />
-      制作の背景にあるリサーチと、日々のアトリエからの記録。
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {research.map((item) => {
-        const href = `${base}/research/${item.id}`;
-        return (
-          <a href={href} class="group flex flex-col gap-4 p-6 border border-gray-200 dark:border-gray-800 rounded hover:border-primary/40 transition-colors">
-            <span class="material-symbols-outlined text-primary/40 text-3xl group-hover:text-primary transition-colors">{item.icon}</span>
-            <h3 class="font-serif text-lg text-text-main dark:text-white group-hover:text-primary transition-colors">{item.title}</h3>
-            <p class="text-xs text-text-muted leading-relaxed">{item.summary}</p>
-            <span class="text-xs text-primary font-medium mt-auto flex items-center gap-1 group-hover:gap-2 transition-all">
-              Read more <span class="material-symbols-outlined text-xs">arrow_forward</span>
-            </span>
+    <a class="hidden md:flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80 transition-colors" href={`${base}/projects`}>
+      View All Projects <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
+    {research.map((item, i) => (
+      <article class={`flex flex-col gap-4 group ${i === 1 ? "md:mt-20" : ""}`}>
+        <a href={`${base}/projects/${item.id}`} class="aspect-[3/4] overflow-hidden rounded relative bg-gray-200 block">
+          {item.main_image ? (
+            <div
+              class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-90"
+              style={`background-image: url("${item.main_image.url}?w=600&q=80");`}
+            />
+          ) : (
+            <div class="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-800">
+              <span class="material-symbols-outlined text-6xl text-gray-300 dark:text-gray-600">{item.icon}</span>
+            </div>
+          )}
+          <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+        </a>
+        <div class="flex flex-col gap-2">
+          <a href={`${base}/projects/${item.id}`}>
+            <h3 class="font-serif text-xl text-text-main dark:text-white group-hover:text-primary transition-colors">{item.title}</h3>
           </a>
-        );
-      })}
-    </div>
+          <p class="text-xs text-text-muted leading-relaxed line-clamp-2">{item.summary}</p>
+          <div class="flex items-center gap-3 mt-1">
+            <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">{item.category}</span>
+            {item.year && <span class="text-xs font-mono text-text-muted">{item.year}</span>}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+  <div class="md:hidden mt-12 flex justify-center">
+    <a href={`${base}/projects`} class="px-6 py-3 border border-text-main dark:border-white text-sm font-medium hover:bg-text-main hover:text-white dark:hover:bg-white dark:hover:text-background-dark transition-colors inline-block">
+      View All Projects
+    </a>
   </div>
 </section>

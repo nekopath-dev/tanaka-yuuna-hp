@@ -77,7 +77,7 @@ export interface News extends MicroCMSListContent {
   url?: string;
 }
 
-// ④ research (List type)
+// ④ research (List type) - プロジェクト用
 export interface Research extends MicroCMSListContent {
   title: string;
   subtitle_en?: string;
@@ -87,4 +87,5 @@ export interface Research extends MicroCMSListContent {
   main_image?: MicroCMSImage;
   summary: string;
   content?: string; // Rich editor HTML
+  year?: number; // プロジェクト実施年
 }
