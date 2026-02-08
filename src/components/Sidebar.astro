@@ -51,17 +51,17 @@ function isActive(href: string): boolean {
   <div class="flex flex-col gap-2">
     {settings.instagram_url && (
       <a class="group flex items-center gap-2.5" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
-        <img src={`${base}/icons/instagram.png`} alt="Instagram" class="w-5 h-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
+        <img src={`${base}/icons/instagram.png`} alt="Instagram" class="block w-5 h-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
         <span class="text-[11px] leading-none text-text-muted transition-colors duration-300 group-hover:text-primary">
-          {settings.instagram_handle}
+          {settings.instagram_handle?.replace(/^@/, "")}
         </span>
       </a>
     )}
     {settings.x_url && (
       <a class="group flex items-center gap-2.5" href={settings.x_url} target="_blank" rel="noopener noreferrer">
-        <img src={`${base}/icons/x.png`} alt="X" class="w-5 h-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
+        <img src={`${base}/icons/x.png`} alt="X" class="block w-5 h-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
         <span class="text-[11px] leading-none text-text-muted transition-colors duration-300 group-hover:text-primary">
-          {settings.x_handle}
+          {settings.x_handle?.replace(/^@/, "")}
         </span>
       </a>
     )}
