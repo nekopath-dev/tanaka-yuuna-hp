@@ -48,23 +48,19 @@ function isActive(href: string): boolean {
     ))}
   </nav>
   <!-- Social -->
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-2">
     {settings.instagram_url && (
-      <a class="group flex items-center gap-3" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
-        <span class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 dark:border-gray-600 text-xs font-bold text-text-main dark:text-white transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
-          IG
-        </span>
-        <span class="text-xs text-text-muted transition-colors duration-300 group-hover:text-primary">
+      <a class="group flex items-center gap-2.5" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
+        <img src={`${base}/icons/instagram.png`} alt="Instagram" class="w-5 h-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
+        <span class="text-[11px] text-text-muted transition-colors duration-300 group-hover:text-primary">
           {settings.instagram_handle}
         </span>
       </a>
     )}
     {settings.x_url && (
-      <a class="group flex items-center gap-3" href={settings.x_url} target="_blank" rel="noopener noreferrer">
-        <span class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 dark:border-gray-600 text-xs font-bold text-text-main dark:text-white transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
-          X
-        </span>
-        <span class="text-xs text-text-muted transition-colors duration-300 group-hover:text-primary">
+      <a class="group flex items-center gap-2.5" href={settings.x_url} target="_blank" rel="noopener noreferrer">
+        <img src={`${base}/icons/x.png`} alt="X" class="w-5 h-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
+        <span class="text-[11px] text-text-muted transition-colors duration-300 group-hover:text-primary">
           {settings.x_handle}
         </span>
       </a>
