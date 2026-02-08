@@ -7,15 +7,14 @@ const settings = await getGlobalSettings();
 
 <BaseLayout title="作家について" settings={settings}>
   <!-- Hero Image -->
-  <section class="w-full h-[50vh] md:h-[70vh] overflow-hidden relative grayscale-[30%] bg-gray-100 dark:bg-gray-900">
+  <section class="w-full py-12 md:py-20 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
     {settings.profile_image && (
       <img
         src={`${settings.profile_image.url}?w=1920&q=80`}
         alt={settings.artist_name}
-        class="absolute inset-0 w-full h-full object-contain"
+        class="max-h-[50vh] md:max-h-[65vh] w-auto max-w-full object-contain grayscale-[30%]"
       />
     )}
-    <div class="absolute inset-0 bg-white/10 dark:bg-black/20 pointer-events-none"></div>
   </section>
 
   <!-- Profile Content -->
