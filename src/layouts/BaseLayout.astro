@@ -13,7 +13,8 @@ interface Props {
 }
 
 const { title, settings, minimalFooter = false } = Astro.props;
-const pageTitle = title ? `${title} | ${settings.site_title}` : settings.site_title;
+const siteName = `${settings.artist_name} Yuna Tanaka`;
+const pageTitle = title ? `${title} | ${siteName}` : `${siteName} | ${settings.artist_subtitle}`;
 const currentPath = Astro.url.pathname;
 ---
 

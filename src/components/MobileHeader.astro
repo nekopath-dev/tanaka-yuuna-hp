@@ -51,13 +51,17 @@ const navItems = [
     <!-- SNS -->
     <div class="flex items-center gap-4 pt-8 border-t border-gray-200 dark:border-gray-800">
       {settings.instagram_url && (
-        <a class="opacity-50 hover:opacity-100 transition-opacity" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
-          <img src={`${base}/icons/instagram.png`} alt="Instagram" class="block w-4 h-4" />
+        <a class="group flex flex-col items-center gap-2" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
+          <div class="w-11 h-11 rounded-xl border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors duration-300 group-hover:border-primary">
+            <img src={`${base}/icons/instagram.png`} alt="Instagram" class="block w-4 h-4 opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
+          </div>
         </a>
       )}
       {settings.x_url && (
-        <a class="opacity-50 hover:opacity-100 transition-opacity" href={settings.x_url} target="_blank" rel="noopener noreferrer">
-          <img src={`${base}/icons/x.png`} alt="X" class="block w-4 h-4" />
+        <a class="group flex flex-col items-center gap-2" href={settings.x_url} target="_blank" rel="noopener noreferrer">
+          <div class="w-11 h-11 rounded-xl border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors duration-300 group-hover:border-primary">
+            <img src={`${base}/icons/x.png`} alt="X" class="block w-4 h-4 opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
+          </div>
         </a>
       )}
     </div>

@@ -41,7 +41,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <div class="flex items-start gap-8">
           {settings.instagram_url && (
             <a class="group flex flex-col items-center gap-2" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
-              <div class="w-12 h-12 rounded-lg border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors duration-300 group-hover:border-primary">
+              <div class="w-12 h-12 rounded-xl border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors duration-300 group-hover:border-primary">
                 <img src={`${base}/icons/instagram.png`} alt="Instagram" class="block w-5 h-5 opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <span class="text-[11px] leading-none text-text-muted transition-colors duration-300 group-hover:text-primary">
@@ -51,7 +51,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           )}
           {settings.x_url && (
             <a class="group flex flex-col items-center gap-2" href={settings.x_url} target="_blank" rel="noopener noreferrer">
-              <div class="w-12 h-12 rounded-lg border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors duration-300 group-hover:border-primary">
+              <div class="w-12 h-12 rounded-xl border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors duration-300 group-hover:border-primary">
                 <img src={`${base}/icons/x.png`} alt="X" class="block w-5 h-5 opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <span class="text-[11px] leading-none text-text-muted transition-colors duration-300 group-hover:text-primary">
