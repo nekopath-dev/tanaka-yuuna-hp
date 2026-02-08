@@ -48,23 +48,23 @@ function isActive(href: string): boolean {
     ))}
   </nav>
   <!-- Social -->
-  <div class="flex flex-col gap-2.5">
+  <div class="flex flex-col gap-3">
     {settings.instagram_url && (
-      <a class="group flex items-center gap-3 no-underline" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
-        <span class="flex items-center justify-center w-[75px] h-[65px] text-[30px] font-bold rounded-[4px] border border-solid border-black bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black group-hover:border-black">
+      <a class="group flex items-center gap-3" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 dark:border-gray-600 text-xs font-bold text-text-main dark:text-white transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
           IG
         </span>
-        <span class="text-sm text-text-muted transition-colors duration-500 group-hover:text-primary">
+        <span class="text-xs text-text-muted transition-colors duration-300 group-hover:text-primary">
           {settings.instagram_handle}
         </span>
       </a>
     )}
     {settings.x_url && (
-      <a class="group flex items-center gap-3 no-underline" href={settings.x_url} target="_blank" rel="noopener noreferrer">
-        <span class="flex items-center justify-center w-[75px] h-[65px] text-[30px] font-bold rounded-[4px] border border-solid border-black bg-black text-white transition-all duration-500 group-hover:bg-white group-hover:text-black group-hover:border-black">
+      <a class="group flex items-center gap-3" href={settings.x_url} target="_blank" rel="noopener noreferrer">
+        <span class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 dark:border-gray-600 text-xs font-bold text-text-main dark:text-white transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
           X
         </span>
-        <span class="text-sm text-text-muted transition-colors duration-500 group-hover:text-primary">
+        <span class="text-xs text-text-muted transition-colors duration-300 group-hover:text-primary">
           {settings.x_handle}
         </span>
       </a>
