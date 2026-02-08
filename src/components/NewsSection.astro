@@ -28,8 +28,12 @@ function formatDate(dateStr: string): string {
         const href = item.url || `${base}/news/${item.id}`;
         return (
           <a href={href} class="news-item group flex flex-col md:flex-row md:items-center gap-2 md:gap-8 py-6 hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors px-4 -mx-4 rounded">
-            <time class="text-sm font-mono text-text-muted whitespace-nowrap">{formatDate(item.published_at)}</time>
-            <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded whitespace-nowrap self-start">{item.category}</span>
+            {item.published_at && (
+              <time class="text-sm font-mono text-text-muted whitespace-nowrap">{formatDate(item.published_at)}</time>
+            )}
+            {item.category && (
+              <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded whitespace-nowrap self-start">{item.category}</span>
+            )}
             <p class="text-sm md:text-base text-text-main dark:text-gray-200 group-hover:text-primary transition-colors">{item.title}</p>
             <span class="material-symbols-outlined text-text-muted text-sm ml-auto hidden md:block group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </a>

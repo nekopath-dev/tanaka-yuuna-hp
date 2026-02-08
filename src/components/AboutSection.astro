@@ -14,9 +14,11 @@ const { settings } = Astro.props;
       <h2 class="font-serif text-3xl font-bold tracking-tight text-text-main dark:text-white">About</h2>
       <span class="text-sm text-primary font-medium mb-1 tracking-wider opacity-80">{settings.about_subtitle}</span>
     </div>
-    <div class="font-serif text-base md:text-lg leading-[2] text-text-main dark:text-gray-200 text-justify rich-content">
-      <Fragment set:html={settings.about_text} />
-    </div>
+    {settings.about_text && (
+      <div class="font-serif text-base md:text-lg leading-[2] text-text-main dark:text-gray-200 text-justify rich-content">
+        <Fragment set:html={settings.about_text} />
+      </div>
+    )}
     <div class="pt-4">
       <span class="inline-block w-12 h-[1px] bg-primary/30"></span>
     </div>

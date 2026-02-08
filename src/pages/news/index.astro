@@ -35,8 +35,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <article class="group flex flex-col md:flex-row gap-8 md:gap-12 border-b border-gray-100 dark:border-gray-800/50 pb-12">
           <!-- Date & Category -->
           <div class="md:w-32 flex flex-row md:flex-col items-center md:items-start gap-3 shrink-0 pt-1">
-            <time class="font-display text-sm text-text-muted font-light tracking-wide">{formatDate(item.published_at)}</time>
-            <span class="px-2 py-0.5 border border-gray-300 dark:border-gray-700 rounded-sm text-[10px] uppercase tracking-wider text-text-muted bg-white/50 dark:bg-black/20">{item.category}</span>
+            {item.published_at && (
+              <time class="font-display text-sm text-text-muted font-light tracking-wide">{formatDate(item.published_at)}</time>
+            )}
+            {item.category && (
+              <span class="px-2 py-0.5 border border-gray-300 dark:border-gray-700 rounded-sm text-[10px] uppercase tracking-wider text-text-muted bg-white/50 dark:bg-black/20">{item.category}</span>
+            )}
           </div>
           <!-- Content -->
           <div class="flex-1 flex flex-col gap-4">

@@ -24,21 +24,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
     {works.map((work, i) => (
       <article class={`flex flex-col gap-4 group ${i === 1 ? "md:mt-20" : ""}`}>
-        <a href={`${base}/works/${work.slug}`} class="aspect-[3/4] overflow-hidden rounded relative bg-gray-200 block">
-          <div
-            class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-90"
-            style={`background-image: url("${work.main_image.url}?w=600&q=80");`}
-          />
-          <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+        <a href={`${base}/works/${work.slug}`} class="aspect-[3/4] overflow-hidden rounded relative bg-gray-100 dark:bg-gray-800 block">
+          {work.main_image ? (
+            <>
+              <div
+                class="w-full h-full bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-90"
+                style={`background-image: url("${work.main_image.url}?w=600&q=80");`}
+              />
+              <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+            </>
+          ) : (
+            <div class="w-full h-full flex items-center justify-center">
+              <span class="text-xs text-gray-400 dark:text-gray-500 tracking-wider">画像準備中</span>
+            </div>
+          )}
         </a>
         <div class="flex flex-col gap-2">
           <a href={`${base}/works/${work.slug}`}>
             <h3 class="font-serif text-xl text-text-main dark:text-white group-hover:text-primary transition-colors">{work.title}</h3>
           </a>
-          <p class="text-xs text-text-muted leading-relaxed">{work.material}</p>
+          {work.material && (
+            <p class="text-xs text-text-muted leading-relaxed">{work.material}</p>
+          )}
           <div class="flex items-center gap-3 mt-1">
-            <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">{work.category}</span>
-            <span class="text-xs font-mono text-text-muted">{work.year}</span>
+            {work.category && (
+              <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">{work.category}</span>
+            )}
+            {work.year && <span class="text-xs font-mono text-text-muted">{work.year}</span>}
           </div>
         </div>
       </article>

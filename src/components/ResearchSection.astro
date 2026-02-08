@@ -32,7 +32,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             />
           ) : (
             <div class="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-800">
-              <span class="material-symbols-outlined text-6xl text-gray-300 dark:text-gray-600">{item.icon}</span>
+              <span class="text-xs text-gray-400 dark:text-gray-500 tracking-wider">画像準備中</span>
             </div>
           )}
           <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
@@ -41,9 +41,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           <a href={`${base}/projects/${item.id}`}>
             <h3 class="font-serif text-xl text-text-main dark:text-white group-hover:text-primary transition-colors">{item.title}</h3>
           </a>
-          <p class="text-xs text-text-muted leading-relaxed line-clamp-2">{item.summary}</p>
+          {item.summary && (
+            <p class="text-xs text-text-muted leading-relaxed line-clamp-2">{item.summary}</p>
+          )}
           <div class="flex items-center gap-3 mt-1">
-            <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">{item.category}</span>
+            {item.category && (
+              <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">{item.category}</span>
+            )}
             {item.year && <span class="text-xs font-mono text-text-muted">{item.year}</span>}
           </div>
         </div>

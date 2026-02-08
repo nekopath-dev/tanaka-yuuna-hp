@@ -24,9 +24,11 @@ const settings = await getGlobalSettings();
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 // Related articles: same category, excluding current, max 2
-const related = allResearch
-  .filter((r) => r.id !== research.id && r.category === research.category)
-  .slice(0, 2);
+const related = research.category
+  ? allResearch
+      .filter((r) => r.id !== research.id && r.category === research.category)
+      .slice(0, 2)
+  : [];
 
 function formatDateEN(dateStr: string): string {
   const d = new Date(dateStr);
@@ -40,10 +42,18 @@ function formatDateEN(dateStr: string): string {
     <!-- Breadcrumb -->
     <div class="flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-text-muted mb-12">
       <a class="hover:text-primary transition-colors" href={`${base}/projects`}>Projects</a>
-      <span class="w-4 h-[1px] bg-gray-300 dark:bg-gray-700"></span>
-      <span class="text-primary font-medium">{research.category}</span>
-      <span class="w-4 h-[1px] bg-gray-300 dark:bg-gray-700"></span>
-      <span>{formatDateEN(research.published_at)}</span>
+      {research.category && (
+        <>
+          <span class="w-4 h-[1px] bg-gray-300 dark:bg-gray-700"></span>
+          <span class="text-primary font-medium">{research.category}</span>
+        </>
+      )}
+      {research.published_at && (
+        <>
+          <span class="w-4 h-[1px] bg-gray-300 dark:bg-gray-700"></span>
+          <span>{formatDateEN(research.published_at)}</span>
+        </>
+      )}
     </div>
 
     <!-- Title -->
@@ -72,9 +82,9 @@ function formatDateEN(dateStr: string): string {
     <div class="max-w-2xl mx-auto rich-content text-base md:text-lg leading-[2.0] text-text-main dark:text-gray-300 font-light text-justify">
       {research.content ? (
         <Fragment set:html={research.content} />
-      ) : (
+      ) : research.summary ? (
         <p class="text-text-muted">{research.summary}</p>
-      )}
+      ) : null}
     </div>
   </article>
 
@@ -105,11 +115,13 @@ function formatDateEN(dateStr: string): string {
                   </div>
                 ) : (
                   <div class="w-24 h-24 shrink-0 rounded-sm bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                    <span class="material-symbols-outlined text-gray-300 dark:text-gray-700">{item.icon}</span>
+                    <span class="material-symbols-outlined text-gray-300 dark:text-gray-700">{item.icon || "folder_special"}</span>
                   </div>
                 )}
                 <div class="flex flex-col gap-2">
-                  <span class="text-[10px] text-primary uppercase tracking-widest">{item.category}</span>
+                  {item.category && (
+                    <span class="text-[10px] text-primary uppercase tracking-widest">{item.category}</span>
+                  )}
                   <h4 class="font-serif text-lg leading-snug group-hover:text-primary transition-colors">{item.title}</h4>
                 </div>
               </a>

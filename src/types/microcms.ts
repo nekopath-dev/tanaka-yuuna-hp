@@ -51,21 +51,21 @@ export interface Work extends MicroCMSListContent {
   title: string;
   slug: string;
   subtitle_en?: string;
-  category: string;
-  main_image: MicroCMSImage;
+  category?: string;
+  main_image?: MicroCMSImage;
   gallery?: MicroCMSImage[];
-  year: number;
+  year?: number;
   technique?: string;
-  material: string;
-  description: string; // Rich editor HTML
+  material?: string;
+  description?: string; // Rich editor HTML
 }
 
 // ③ news (List type)
 export interface News extends MicroCMSListContent {
   title: string;
   subtitle_en?: string;
-  category: string;
-  published_at: string;
+  category?: string;
+  published_at?: string;
   main_image?: MicroCMSImage;
   content?: string; // Rich editor HTML
   event_date_start?: string;
@@ -81,11 +81,11 @@ export interface News extends MicroCMSListContent {
 export interface Research extends MicroCMSListContent {
   title: string;
   subtitle_en?: string;
-  icon: string;
-  category: string;
-  published_at: string;
+  icon?: string;
+  category?: string;
+  published_at?: string;
   main_image?: MicroCMSImage;
-  summary: string;
+  summary?: string;
   content?: string; // Rich editor HTML
   year?: number; // プロジェクト実施年
 }
