@@ -22,11 +22,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <!-- Profile Image -->
       {settings.profile_image && (
         <div class="w-full md:w-2/5 shrink-0">
-          <div class="aspect-[3/4] overflow-hidden rounded-sm bg-gray-100 dark:bg-gray-900">
+          <div class="md:aspect-[3/4] overflow-hidden rounded-sm bg-gray-100 dark:bg-gray-900">
             <img
               src={`${settings.profile_image.url}?w=800&q=80`}
               alt={settings.artist_name}
-              class="w-full h-full object-cover grayscale-[30%]"
+              class="w-full md:h-full object-contain md:object-cover grayscale-[30%]"
             />
           </div>
         </div>
