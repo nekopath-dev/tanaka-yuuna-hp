@@ -9,8 +9,8 @@ const { works } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<section class="py-24 px-6 md:px-20 bg-background-light dark:bg-background-dark" id="works">
-  <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 dark:border-gray-800 pb-4">
+<section class="py-12 md:py-24 px-6 md:px-20 bg-background-light dark:bg-background-dark" id="works">
+  <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 border-b border-gray-200 dark:border-gray-800 pb-4">
     <div>
       <div class="flex items-end gap-4 mb-2">
         <h2 class="font-serif text-3xl font-bold tracking-tight text-text-main dark:text-white">Works</h2>
@@ -21,7 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       View All Works <span class="material-symbols-outlined text-sm">arrow_forward</span>
     </a>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-16 gap-x-6 md:gap-x-12">
     {works.map((work, i) => (
       <article class={`flex flex-col gap-4 group ${i === 1 ? "md:mt-20" : ""}`}>
         <a href={`${base}/works/${work.slug}`} class="aspect-[3/4] overflow-hidden rounded relative bg-gray-100 dark:bg-gray-800 block">

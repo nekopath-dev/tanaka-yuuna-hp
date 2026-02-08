@@ -130,7 +130,7 @@ function formatDateJP(dateStr: string): string {
       )}
 
       <!-- Article Body -->
-      <div class="flex-1 text-text-main dark:text-gray-200 leading-loose text-justify font-serif rich-content">
+      <div class="flex-1 text-text-main dark:text-gray-200 leading-loose text-left md:text-justify font-serif rich-content">
         {news.content ? (
           <Fragment set:html={news.content} />
         ) : (
@@ -177,7 +177,7 @@ function formatDateJP(dateStr: string): string {
     </div>
 
     <!-- Prev / Next -->
-    <div class="w-full h-[1px] bg-gray-200 dark:bg-gray-800 mt-24 mb-12"></div>
+    <div class="w-full h-[1px] bg-gray-200 dark:bg-gray-800 mt-12 md:mt-24 mb-12"></div>
     <div class="flex justify-between items-center text-sm font-display">
       {prevNews ? (
         <a class="group flex items-center gap-4 w-1/2 pr-4 hover:opacity-70 transition-opacity" href={`${base}/news/${prevNews.id}`}>

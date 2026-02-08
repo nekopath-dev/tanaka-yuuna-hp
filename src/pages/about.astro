@@ -27,7 +27,7 @@ const settings = await getGlobalSettings();
           <span class="text-sm font-display tracking-[0.25em] text-primary uppercase mt-1">Yuna Tanaka</span>
         </div>
         {settings.about_text && (
-          <div class="font-serif text-base md:text-lg leading-[1.8] text-text-main dark:text-gray-300 space-y-8 text-justify mt-4 rich-content">
+          <div class="font-serif text-base md:text-lg leading-[1.8] text-text-main dark:text-gray-300 space-y-8 text-left md:text-justify mt-4 rich-content">
             <Fragment set:html={settings.about_text} />
           </div>
         )}
