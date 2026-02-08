@@ -12,8 +12,8 @@ export default {
         "text-muted": "#6e6e6e",
       },
       fontFamily: {
-        display: ["Inter", "sans-serif"],
-        serif: ["'Noto Serif JP'", "serif"],
+        display: ["'UD デジタル 教科書体 NK-R'", "'UD Digi Kyokasho NK-R'", "'Hiragino Sans'", "'Hiragino Kaku Gothic ProN'", "sans-serif"],
+        serif: ["'UD デジタル 教科書体 NK-R'", "'UD Digi Kyokasho NK-R'", "'Hiragino Sans'", "'Hiragino Kaku Gothic ProN'", "sans-serif"],
       },
       borderRadius: {
         DEFAULT: "0.125rem",
