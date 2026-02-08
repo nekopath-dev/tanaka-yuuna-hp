@@ -22,27 +22,9 @@ const heroImageUrl = settings.hero_image?.url ?? "";
     )}
     <div class="absolute inset-0 bg-white/10 dark:bg-black/20 mix-blend-overlay"></div>
   </div>
-  <!-- Hero Content -->
-  <div class="relative z-10 w-full h-full flex items-center justify-center md:justify-end px-6 md:px-20 py-12">
-    <div class="flex flex-row-reverse gap-8 md:gap-16 items-start h-3/4">
-      <!-- Vertical Japanese Text -->
-      <div class="writing-vertical-rl text-text-main dark:text-white h-full flex items-center">
-        <h2 class="font-serif text-4xl md:text-6xl font-bold leading-relaxed tracking-widest drop-shadow-sm">
-          {settings.hero_copy_jp}
-        </h2>
-        <p class="mt-8 font-serif text-sm md:text-base tracking-widest text-text-main/80 dark:text-gray-200/80 border-r border-primary/40 pr-6 mr-6">
-          {settings.hero_copy_en}<br />{settings.site_title}
-        </p>
-      </div>
-    </div>
-    <!-- Statement -->
-    <div class="absolute bottom-24 left-6 md:left-20 max-w-lg">
-      <p class="font-serif text-sm md:text-base leading-[1.8] text-text-main/80 dark:text-gray-200/80 whitespace-pre-line">{settings.statement}</p>
-    </div>
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:right-20 md:translate-x-0 flex flex-col items-center gap-2 opacity-60 animate-bounce">
-      <span class="text-[10px] tracking-widest uppercase">Scroll</span>
-      <div class="w-[1px] h-12 bg-primary"></div>
-    </div>
+  <!-- Scroll Indicator -->
+  <div class="absolute z-10 bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:right-20 md:translate-x-0 flex flex-col items-center gap-2 opacity-60 animate-bounce">
+    <span class="text-[10px] tracking-widest uppercase">Scroll</span>
+    <div class="w-[1px] h-12 bg-primary"></div>
   </div>
 </section>

@@ -52,7 +52,7 @@ function isActive(href: string): boolean {
     {settings.instagram_url && (
       <a class="group flex items-center gap-2.5" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">
         <img src={`${base}/icons/instagram.png`} alt="Instagram" class="w-5 h-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
-        <span class="text-[11px] text-text-muted transition-colors duration-300 group-hover:text-primary">
+        <span class="text-[11px] leading-none text-text-muted transition-colors duration-300 group-hover:text-primary">
           {settings.instagram_handle}
         </span>
       </a>
@@ -60,7 +60,7 @@ function isActive(href: string): boolean {
     {settings.x_url && (
       <a class="group flex items-center gap-2.5" href={settings.x_url} target="_blank" rel="noopener noreferrer">
         <img src={`${base}/icons/x.png`} alt="X" class="w-5 h-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100" />
-        <span class="text-[11px] text-text-muted transition-colors duration-300 group-hover:text-primary">
+        <span class="text-[11px] leading-none text-text-muted transition-colors duration-300 group-hover:text-primary">
           {settings.x_handle}
         </span>
       </a>
