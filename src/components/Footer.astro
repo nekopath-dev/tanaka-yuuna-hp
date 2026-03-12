@@ -51,6 +51,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
   <!-- Copyright -->
   <div class="mt-12 md:mt-24 pt-4 border-t border-gray-200 dark:border-gray-800">
-    <p class="text-[10px] text-gray-400 uppercase tracking-widest">{settings.copyright_text}</p>
+    <p class="text-[10px] text-gray-400 uppercase tracking-widest">
+      <span class="swap-container inline" data-swap-index="99">
+        <span class="persona-content" data-persona="textile">{settings.copyright_text}</span>
+        <span class="persona-content" data-persona="manga">{settings.copyright_text}</span>
+      </span>
+    </p>
   </div>
 </footer>

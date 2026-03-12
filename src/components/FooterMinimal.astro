@@ -11,7 +11,10 @@ const { settings } = Astro.props;
 <footer class="bg-white dark:bg-[#111111] border-t border-gray-100 dark:border-gray-800">
   <div class="container mx-auto px-6 md:px-32 py-12">
     <div class="flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 uppercase tracking-widest">
-      <p>{settings.copyright_text}</p>
+      <span class="swap-container inline" data-swap-index="99">
+        <span class="persona-content" data-persona="textile">{settings.copyright_text}</span>
+        <span class="persona-content" data-persona="manga">{settings.copyright_text}</span>
+      </span>
       <div class="flex gap-6 mt-4 md:mt-0">
         {settings.instagram_url && (
           <a class="hover:text-text-main dark:hover:text-white transition-colors" href={settings.instagram_url} target="_blank" rel="noopener noreferrer">Instagram</a>

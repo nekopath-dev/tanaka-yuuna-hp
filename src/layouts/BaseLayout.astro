@@ -128,6 +128,21 @@ const currentPath = Astro.url.pathname;
           : "染織造形モードに切り替え";
         btn.setAttribute("aria-label", label);
         btn.setAttribute("title", label);
+
+        // ページタイトル更新
+        if (next === "manga") {
+          document.title = document.title.replace("染織造形作家", "エッセイ漫画作者");
+        } else {
+          document.title = document.title.replace("エッセイ漫画作者", "染織造形作家");
+        }
+
+        // 初回切替時にmanga画像の遅延読み込み
+        if (!window.__mangaImagesLoaded && next === "manga") {
+          document.querySelectorAll('.persona-content[data-persona="manga"][data-src]').forEach(function(img) {
+            img.setAttribute("src", img.getAttribute("data-src"));
+          });
+          window.__mangaImagesLoaded = true;
+        }
       });
     }
   </script>

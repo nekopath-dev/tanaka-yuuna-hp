@@ -24,6 +24,14 @@
   text-orientation: mixed;
 }
 
+/* Persona color themes */
+[data-persona="textile"] {
+  --color-primary: #0505c7;
+}
+[data-persona="manga"] {
+  --color-primary: #e84393;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -95,6 +103,11 @@ html {
 .persona-switch-btn:hover {
   border-color: var(--color-primary, #0505c7);
   transform: rotate(180deg);
+}
+
+.persona-switch-btn:focus-visible {
+  outline: 2px solid var(--color-primary, #0505c7);
+  outline-offset: 2px;
 }
 
 .persona-switch-btn.switching {

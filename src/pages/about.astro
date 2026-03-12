@@ -8,13 +8,25 @@ const settings = await getGlobalSettings();
 <BaseLayout title="作家について" settings={settings}>
   <!-- Hero Image -->
   <section class="w-full py-12 md:py-20 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-    {settings.profile_image && (
-      <img
-        src={`${settings.profile_image.url}?w=1920&q=80`}
-        alt={settings.artist_name}
-        class="max-h-[50vh] md:max-h-[65vh] w-auto max-w-full object-contain grayscale-[30%]"
-      />
-    )}
+    <div class="swap-container" data-swap-index="0">
+      {settings.profile_image && (
+        <img
+          class="persona-content max-h-[50vh] md:max-h-[65vh] w-auto max-w-full object-contain grayscale-[30%]"
+          data-persona="textile"
+          src={`${settings.profile_image.url}?w=1920&q=80`}
+          alt={settings.artist_name}
+        />
+      )}
+      {settings.profile_image && (
+        <img
+          class="persona-content max-h-[50vh] md:max-h-[65vh] w-auto max-w-full object-contain grayscale-[30%]"
+          data-persona="manga"
+          src={`${settings.profile_image.url}?w=1920&q=80`}
+          alt={`${settings.artist_name} - エッセイ漫画`}
+          loading="lazy"
+        />
+      )}
+    </div>
   </section>
 
   <!-- Profile Content -->
@@ -23,12 +35,23 @@ const settings = await getGlobalSettings();
       <!-- Name & Bio -->
       <div class="flex flex-col gap-10">
         <div class="flex flex-col gap-3 border-l-[3px] border-primary pl-6">
-          <h1 class="font-serif text-3xl md:text-5xl font-bold text-text-main dark:text-white tracking-widest leading-tight">{settings.artist_name}</h1>
-          <span class="text-sm font-display tracking-[0.25em] text-primary uppercase mt-1">Yuna Tanaka</span>
+          <div class="swap-container" data-swap-index="1">
+            <h1 class="persona-content font-serif text-3xl md:text-5xl font-bold text-text-main dark:text-white tracking-widest leading-tight" data-persona="textile">{settings.artist_name}</h1>
+            <h1 class="persona-content font-serif text-3xl md:text-5xl font-bold text-text-main dark:text-white tracking-widest leading-tight" data-persona="manga">{settings.artist_name}</h1>
+          </div>
+          <div class="swap-container" data-swap-index="2">
+            <span class="persona-content text-sm font-display tracking-[0.25em] text-primary uppercase mt-1" data-persona="textile">Yuna Tanaka</span>
+            <span class="persona-content text-sm font-display tracking-[0.25em] text-primary uppercase mt-1" data-persona="manga">Yuna Tanaka</span>
+          </div>
         </div>
         {settings.about_text && (
-          <div class="font-serif text-base md:text-lg leading-[1.8] text-text-main dark:text-gray-300 space-y-8 text-left md:text-justify mt-4 rich-content">
-            <Fragment set:html={settings.about_text} />
+          <div class="swap-container" data-swap-index="3">
+            <div class="persona-content font-serif text-base md:text-lg leading-[1.8] text-text-main dark:text-gray-300 space-y-8 text-left md:text-justify mt-4 rich-content" data-persona="textile">
+              <Fragment set:html={settings.about_text} />
+            </div>
+            <div class="persona-content font-serif text-base md:text-lg leading-[1.8] text-text-main dark:text-gray-300 space-y-8 text-left md:text-justify mt-4 rich-content" data-persona="manga">
+              <p>エッセイ漫画についての自己紹介文（CMSデータに差し替え予定）</p>
+            </div>
           </div>
         )}
       </div>
@@ -41,8 +64,13 @@ const settings = await getGlobalSettings();
           <h2 class="font-serif text-2xl text-text-main dark:text-white tracking-widest flex items-center gap-4">
             略歴 <span class="text-xs font-display text-primary tracking-wider uppercase opacity-80 pt-1">Biography</span>
           </h2>
-          <div class="font-serif text-base leading-[1.8] text-text-main dark:text-gray-300 rich-content">
-            <Fragment set:html={settings.cv_list} />
+          <div class="swap-container" data-swap-index="4">
+            <div class="persona-content font-serif text-base leading-[1.8] text-text-main dark:text-gray-300 rich-content" data-persona="textile">
+              <Fragment set:html={settings.cv_list} />
+            </div>
+            <div class="persona-content font-serif text-base leading-[1.8] text-text-main dark:text-gray-300 rich-content" data-persona="manga">
+              <p>漫画関連の経歴（CMSデータに差し替え予定）</p>
+            </div>
           </div>
         </div>
       )}

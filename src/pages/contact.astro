@@ -17,9 +17,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <!-- Description -->
     {settings.contact_description && (
       <div class="mb-16 max-w-2xl mx-auto text-center">
-        <p class="font-serif text-text-main dark:text-gray-200 leading-loose text-sm md:text-base">
-          {settings.contact_description}
-        </p>
+        <div class="swap-container" data-swap-index="0">
+          <p class="persona-content font-serif text-text-main dark:text-gray-200 leading-loose text-sm md:text-base" data-persona="textile">
+            {settings.contact_description}
+          </p>
+          <p class="persona-content font-serif text-text-main dark:text-gray-200 leading-loose text-sm md:text-base" data-persona="manga">
+            エッセイ漫画に関するお問い合わせ（CMSデータに差し替え予定）
+          </p>
+        </div>
       </div>
     )}
 

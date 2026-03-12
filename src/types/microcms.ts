@@ -44,6 +44,16 @@ export interface GlobalSettings {
   x_handle: string;
   x_url: string;
   copyright_text: string;
+
+  // マンガペルソナ用フィールド（全て optional）
+  manga_artist_subtitle?: string;
+  manga_hero_image?: MicroCMSImage;
+  manga_profile_image?: MicroCMSImage;
+  manga_about_text?: string;
+  manga_about_subtitle?: string;
+  manga_cv_list?: string;
+  manga_contact_description?: string;
+  manga_copyright_text?: string;
 }
 
 // ② works (List type)
