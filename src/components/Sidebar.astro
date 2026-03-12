@@ -27,8 +27,14 @@ function isActive(href: string): boolean {
   <!-- Logo Area -->
   <div class="flex flex-col gap-6">
     <a href={`${base}/`} class="flex flex-col gap-1">
-      <h1 class="font-serif text-2xl font-bold tracking-widest text-text-main dark:text-white">{settings.artist_name}</h1>
-      <p class="text-primary text-xs font-medium tracking-[0.2em] uppercase mt-2">{settings.artist_subtitle}</p>
+      <div class="swap-container" data-swap-index="0">
+        <h1 class="persona-content font-serif text-2xl font-bold tracking-widest text-text-main dark:text-white" data-persona="textile">{settings.artist_name}</h1>
+        <h1 class="persona-content font-serif text-2xl font-bold tracking-widest text-text-main dark:text-white" data-persona="manga">{settings.artist_name}</h1>
+      </div>
+      <div class="swap-container" data-swap-index="1">
+        <p class="persona-content text-primary text-xs font-medium tracking-[0.2em] uppercase mt-2" data-persona="textile">{settings.artist_subtitle}</p>
+        <p class="persona-content text-primary text-xs font-medium tracking-[0.2em] uppercase mt-2" data-persona="manga">エッセイ漫画作者</p>
+      </div>
     </a>
   </div>
   <!-- Navigation Links -->

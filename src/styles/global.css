@@ -117,3 +117,48 @@ html {
     animation: none;
   }
 }
+
+/* ============================
+   Persona Content Swap
+   ============================ */
+.swap-container {
+  position: relative;
+  perspective: 600px;
+}
+
+.persona-content {
+  backface-visibility: hidden;
+  transform-origin: center center;
+}
+
+[data-persona="textile"] .persona-content[data-persona="manga"] {
+  display: none;
+}
+[data-persona="manga"] .persona-content[data-persona="textile"] {
+  display: none;
+}
+
+@keyframes flipOut {
+  0%   { opacity: 1; transform: rotateX(0deg); }
+  100% { opacity: 0; transform: rotateX(90deg); }
+}
+
+@keyframes flipIn {
+  0%   { opacity: 0; transform: rotateX(-90deg); }
+  100% { opacity: 1; transform: rotateX(0deg); }
+}
+
+.swap-container.flipping-out .persona-content {
+  animation: flipOut 0.25s ease-in forwards;
+}
+
+.swap-container.flipping-in .persona-content {
+  animation: flipIn 0.25s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swap-container.flipping-out .persona-content,
+  .swap-container.flipping-in .persona-content {
+    animation: none;
+  }
+}

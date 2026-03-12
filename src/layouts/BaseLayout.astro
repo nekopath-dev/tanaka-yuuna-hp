@@ -69,7 +69,11 @@ const currentPath = Astro.url.pathname;
         btn.setAttribute("title", "染織造形モードに切り替え");
       }
 
+      let isSwitching = false;
       btn.addEventListener("click", () => {
+        if (isSwitching) return;
+        isSwitching = true;
+
         const html = document.documentElement;
         const current = html.dataset.persona || "textile";
         const next = current === "textile" ? "manga" : "textile";
@@ -80,9 +84,43 @@ const currentPath = Astro.url.pathname;
           btn.classList.remove("switching");
         }, { once: true });
 
-        // 状態切替
-        html.dataset.persona = next;
-        localStorage.setItem("persona", next);
+        // パタパタ: スタガードアニメーション
+        const containers = [...document.querySelectorAll(".swap-container")];
+        const staggerDelay = 80;
+        const flipDuration = 250;
+
+        if (containers.length === 0) {
+          // swap-container がない場合は即切替
+          html.dataset.persona = next;
+          localStorage.setItem("persona", next);
+          isSwitching = false;
+        } else {
+          containers.forEach((container, i) => {
+            setTimeout(() => {
+              // Step 1: flip out
+              container.classList.add("flipping-out");
+
+              setTimeout(() => {
+                // Step 2: コンテンツ切替（最初の要素のときだけ）
+                container.classList.remove("flipping-out");
+                if (i === 0) {
+                  html.dataset.persona = next;
+                  localStorage.setItem("persona", next);
+                }
+
+                // Step 3: flip in
+                container.classList.add("flipping-in");
+                setTimeout(() => {
+                  container.classList.remove("flipping-in");
+                  // 最後の要素が終わったらロック解除
+                  if (i === containers.length - 1) {
+                    isSwitching = false;
+                  }
+                }, flipDuration);
+              }, flipDuration);
+            }, i * staggerDelay);
+          });
+        }
 
         // aria-label 更新
         const label = next === "textile"

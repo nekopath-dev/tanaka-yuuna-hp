@@ -13,10 +13,18 @@ const heroImageUrl = settings.hero_image?.url ?? "";
   <!-- Background -->
   <div class="absolute inset-0 z-0">
     {heroImageUrl ? (
-      <div
-        class="w-full h-full bg-cover bg-center transition-transform duration-[20s] hover:scale-105"
-        style={`background-image: linear-gradient(to right, rgba(249,249,247,0.2), rgba(249,249,247,0.1)), url("${heroImageUrl}?w=1920&q=80");`}
-      />
+      <div class="swap-container w-full h-full" data-swap-index="2">
+        <div
+          class="persona-content w-full h-full bg-cover bg-center transition-transform duration-[20s] hover:scale-105"
+          data-persona="textile"
+          style={`background-image: linear-gradient(to right, rgba(249,249,247,0.2), rgba(249,249,247,0.1)), url("${heroImageUrl}?w=1920&q=80");`}
+        />
+        <div
+          class="persona-content absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-[20s] hover:scale-105"
+          data-persona="manga"
+          style={`background-image: linear-gradient(to right, rgba(249,249,247,0.2), rgba(249,249,247,0.1)), url("${heroImageUrl}?w=1920&q=80");`}
+        />
+      </div>
     ) : (
       <div class="w-full h-full bg-background-light dark:bg-background-dark" />
     )}
