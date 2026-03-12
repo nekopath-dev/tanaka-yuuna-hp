@@ -63,3 +63,57 @@ html {
 .rich-content ol {
   @apply list-decimal pl-6 mb-6 space-y-2;
 }
+
+/* ============================
+   Persona Switch Button
+   ============================ */
+.persona-switch-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 70;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #d1d1d1;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2d2d2d;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.dark .persona-switch-btn {
+  background: rgba(26, 26, 26, 0.9);
+  border-color: #555;
+  color: #e5e5e5;
+}
+
+.persona-switch-btn:hover {
+  border-color: var(--color-primary, #0505c7);
+  transform: rotate(180deg);
+}
+
+.persona-switch-btn.switching {
+  animation: persona-spin 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes persona-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(720deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .persona-switch-btn {
+    transition: none;
+  }
+  .persona-switch-btn:hover {
+    transform: none;
+  }
+  .persona-switch-btn.switching {
+    animation: none;
+  }
+}

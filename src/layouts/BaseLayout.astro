@@ -19,15 +19,31 @@ const currentPath = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
-<html class="light" lang="ja">
+<html class="light" lang="ja" data-persona="textile">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{pageTitle}</title>
   <!-- Material Symbols -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <!-- Persona FOUC Prevention -->
+  <script is:inline>
+    (function() {
+      var p = localStorage.getItem("persona") || "textile";
+      document.documentElement.dataset.persona = p;
+    })();
+  </script>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-200 font-display transition-colors duration-300 antialiased selection:bg-primary/20">
+  <!-- Persona Switch Button -->
+  <button
+    id="persona-switch-btn"
+    class="persona-switch-btn"
+    aria-label="エッセイ漫画モードに切り替え"
+    title="エッセイ漫画モードに切り替え"
+  >
+    <span class="material-symbols-outlined text-lg">autorenew</span>
+  </button>
   <div class="flex flex-col md:flex-row min-h-screen w-full relative">
     <!-- Mobile Header -->
     <MobileHeader settings={settings} />
@@ -42,5 +58,40 @@ const currentPath = Astro.url.pathname;
       }
     </main>
   </div>
+  <!-- Persona Switch Script -->
+  <script>
+    const btn = document.getElementById("persona-switch-btn");
+    if (btn) {
+      // 初期状態の aria-label を同期
+      const initPersona = document.documentElement.dataset.persona || "textile";
+      if (initPersona === "manga") {
+        btn.setAttribute("aria-label", "染織造形モードに切り替え");
+        btn.setAttribute("title", "染織造形モードに切り替え");
+      }
+
+      btn.addEventListener("click", () => {
+        const html = document.documentElement;
+        const current = html.dataset.persona || "textile";
+        const next = current === "textile" ? "manga" : "textile";
+
+        // ボタン回転アニメーション
+        btn.classList.add("switching");
+        btn.addEventListener("animationend", () => {
+          btn.classList.remove("switching");
+        }, { once: true });
+
+        // 状態切替
+        html.dataset.persona = next;
+        localStorage.setItem("persona", next);
+
+        // aria-label 更新
+        const label = next === "textile"
+          ? "エッセイ漫画モードに切り替え"
+          : "染織造形モードに切り替え";
+        btn.setAttribute("aria-label", label);
+        btn.setAttribute("title", label);
+      });
+    }
+  </script>
 </body>
 </html>
